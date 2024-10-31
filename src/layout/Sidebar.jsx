@@ -4,7 +4,11 @@ import logo from '../../public/image/logo.png';
 import { FaDollarSign, FaSackDollar, FaUsers } from "react-icons/fa6";
 import { BiMenu, BiSolidDashboard } from "react-icons/bi";
 import { CiSettings } from "react-icons/ci";
-import { MdExpandMore, MdExpandLess } from "react-icons/md"; // Import icons for dropdown indicator
+import { MdExpandMore, MdExpandLess, MdOutlinePriceChange } from "react-icons/md"; // Import icons for dropdown indicator
+import { GrUserWorker } from "react-icons/gr";
+import { VscGithubProject } from "react-icons/vsc";
+import { RiVoiceprintFill } from "react-icons/ri";
+import { AiFillDollarCircle } from "react-icons/ai";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -52,7 +56,7 @@ const Sidebar = () => {
                 onClick={toggleEmployeeDropdown}
                 className="flex text-[white] cursor-pointer items-center text-[18px] font-medium p-[10px] m-[6px] rounded-lg"
               >
-                <FaSackDollar className="h-7 w-7 lg:h-5 lg:w-5" />
+                <GrUserWorker className="h-7 w-7 lg:h-5 lg:w-5" />
                 <span className="hidden ml-2 sm:block">Employee</span>
                 {/* Arrow Icon */}
                 {isEmployeeDropdownOpen ? (
@@ -74,27 +78,27 @@ const Sidebar = () => {
                     <span className="hidden ml-2 sm:block">Employee List</span>
                   </NavLink>
                   <NavLink
-                    to="employee-rate"
+                    to="employeerate"
                     className={({ isActive }) =>
                       isActive
                         ? "flex p-[10px] m-[6px] cursor-pointer items-center font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
                         : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center font-medium rounded-lg"
                     }
                   >
-                    <span className="hidden ml-2 sm:block">Employee Rate</span>
+                    <span className="hidden ml-2 sm:block">Employee hr Rate</span>
                   </NavLink>
                   <NavLink
-                    to="payment"
+                    to="employeepayment"
                     className={({ isActive }) =>
                       isActive
                         ? "flex p-[10px] m-[6px] cursor-pointer items-center font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
                         : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center font-medium rounded-lg"
                     }
                   >
-                    <span className="hidden ml-2 sm:block">Payment</span>
+                    <span className="hidden ml-2 sm:block">Employee Payment</span>
                   </NavLink>
                   <NavLink
-                    to="weekly-rate"
+                    to="employee-payment-weeklyrate"
                     className={({ isActive }) =>
                       isActive
                         ? "flex p-[10px] m-[6px] cursor-pointer items-center font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
@@ -108,27 +112,51 @@ const Sidebar = () => {
             </div>
 
             <NavLink
-              to="trainer"
+              to="project"
               className={({ isActive }) =>
                 isActive
                   ? "flex cursor-pointer items-center text-[18px] font-medium p-[10px] bg-[#FFFFFF] text-[#193664] m-[6px] rounded-lg"
                   : "flex text-[white] cursor-pointer items-center text-[18px] font-medium p-[10px] m-[6px] rounded-lg"
               }
             >
-              <BiMenu className="h-7 w-7 lg:h-5 lg:w-5" />
-              <span className="hidden ml-2 sm:block">Top Questions</span>
+              <VscGithubProject className="h-7 w-7 lg:h-5 lg:w-5" />
+              <span className="hidden ml-2 sm:block">Project</span>
             </NavLink>
 
             <NavLink
-              to="subscription"
+              to="cost"
               className={({ isActive }) =>
                 isActive
                   ? "flex p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
                   : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium rounded-lg"
               }
             >
-              <FaDollarSign className="h-7 w-7 lg:h-5 lg:w-5" />
-              <span className="hidden ml-2 sm:block">Subscription</span>
+              <MdOutlinePriceChange className="h-7 w-7 lg:h-5 lg:w-5" />
+              <span className="hidden ml-2 sm:block">Cost</span>
+            </NavLink>
+
+            <NavLink
+              to="invoice"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
+                  : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium rounded-lg"
+              }
+            >
+             <RiVoiceprintFill className="h-7 w-7 lg:h-5 lg:w-5" />
+              <span className="hidden ml-2 sm:block">Invoice lenbec</span>
+            </NavLink>
+
+            <NavLink
+              to="paymentrevolut"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
+                  : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium rounded-lg"
+              }
+            >
+             <AiFillDollarCircle className="h-7 w-7 lg:h-5 lg:w-5"/>
+              <span className="hidden ml-2 sm:block">Payment in revolut</span>
             </NavLink>
 
             <NavLink

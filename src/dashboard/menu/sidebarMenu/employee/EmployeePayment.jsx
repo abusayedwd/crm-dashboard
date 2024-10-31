@@ -5,6 +5,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import styles from './../style.module.css'
 import './../table.css'
 import { useNavigate } from "react-router-dom";
+import { FaUsers } from "react-icons/fa6";
 const { Search } = Input;
  
 const dataSource = [
@@ -36,7 +37,7 @@ const dataSource = [
       phone:'4536656'
     },
 ]
-const EmployeeRatehr = () => {
+const EmployeePayment = () => {
    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -62,35 +63,35 @@ const EmployeeRatehr = () => {
       ),
     },
     {
-      title: "8 hourly rate",
+      title: "Amount",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">$453</p>
+          <p className="font-medium">$423</p>
         </div>
       ),
     },
     {
-      title: "10 hourly rate",
+      title: "Date",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">$500</p>
+          <p className="font-medium">11-01-24</p>
         </div>
       ),
     },
     {
-      title: "Designation",
+      title: "For What",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">Team leader</p>
+          <p className="font-medium">Team manager</p>
         </div>
       ),
     },
@@ -127,13 +128,23 @@ const onChange = (date, dateString) => {
   console.log(date, dateString);
 };
   return (
-    <div className="">
-       
+    <div className="mt-12">
+       <div className=" rounded h-[150px] w-72 flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+          <div className="mx-6 h-16 w-16 rounded flex justify-center items-center">
+            <FaUsers className="text-[#00bfff] w-12 h-12" />
+          </div>
+          <div className="mx-6 text-center">
+            <p className="text-[18px] font-semibold my-4">
+              Total Payment
+            </p>
+            <h1 className="text-[34px] font-medium">$823</h1>
+          </div>
+        </div>
       <div className="rounded-t-lg mt-[24px]">
         <div className="flex py-[22px] justify-between items-center">
           <div>
 
-          <p className="text-header">Customer</p>
+          <p className="text-header">Employee Payment</p>
           </div>
           <div>
            <Space direction="vertical">
@@ -234,4 +245,4 @@ const onChange = (date, dateString) => {
   );
 };
 
-export default EmployeeRatehr;
+export default EmployeePayment;

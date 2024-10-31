@@ -189,7 +189,7 @@ const onChange = (date, dateString) => {
           <p className="text-header">Customer</p>
           </div>
           <div>
-          <button onClick={() => navigate('addcustomer')} className=' bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg'>+Add Customer</button>
+          <button onClick={() => navigate('addcustomer')} className=' bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg'>+Add Employee</button>
           <Space direction="vertical">
     <DatePicker onChange={onChange} />
    

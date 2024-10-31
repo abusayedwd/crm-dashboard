@@ -2,8 +2,8 @@ import { Button, DatePicker, Input, Modal, Space, Table } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
-import styles from './../style.module.css'
-import './../table.css'
+import styles from './style.module.css'
+import './table.css'
 import { useNavigate } from "react-router-dom";
 const { Search } = Input;
  
@@ -36,7 +36,7 @@ const dataSource = [
       phone:'4536656'
     },
 ]
-const EmployeeRatehr = () => {
+const Cost = () => {
    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -62,35 +62,35 @@ const EmployeeRatehr = () => {
       ),
     },
     {
-      title: "8 hourly rate",
+      title: "Amount",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">$453</p>
+          <p className="font-medium">$423</p>
         </div>
       ),
     },
     {
-      title: "10 hourly rate",
+      title: "Date",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">$500</p>
+          <p className="font-medium">11-01-24</p>
         </div>
       ),
     },
     {
-      title: "Designation",
+      title: "For What",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">Team leader</p>
+          <p className="font-medium">Team manager</p>
         </div>
       ),
     },
@@ -234,4 +234,4 @@ const onChange = (date, dateString) => {
   );
 };
 
-export default EmployeeRatehr;
+export default Cost;

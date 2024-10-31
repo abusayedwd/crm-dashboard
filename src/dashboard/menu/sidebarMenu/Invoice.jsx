@@ -1,7 +1,7 @@
 import { Input, Modal, DatePicker, Space, Table, Button } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
-import users from '../../../public/image/users.jpg'
+ 
 import { CloseOutlined } from "@ant-design/icons";
 import styles from './style.module.css'
  
@@ -32,7 +32,7 @@ const dataSource = [
     },
      
 ]
-const Earning = () => {
+const Invoice = () => {
  
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,42 +47,116 @@ const Earning = () => {
       render: (text,_,index) => index + 1,
     },
     {
-      title: "User Name",
+        title: "Customer",
+        dataIndex: "name",
+        key: "name",
+        render: (_, record) => (
+          <div className="flex gap-2 items-center">
+             
+            <p className="font-medium">Steegman
+  
+            </p>
+          </div>
+        ),
+      },
+    {
+      title: "Project",
       dataIndex: "customerName",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
-          <img
-            className="w-[34px] h-[34px] rounded-full"
-            src={users}
-            alt=""
-          />
+          
           {/* <p className="font-medium">{record?.customerName}</p> */}
-          <p className="font-medium">AbSayed</p>
+          <p className="font-medium">TTG Total Elektra B.V.
+          </p>
         </div>
       ),
     },
+    
    
     {
-      title: "Type",
-      dataIndex: "Type",
-      key: "type",
+      title: "Invoice No:",
+      dataIndex: "name",
+      key: "name",
       render: (_, record) => (
-        <p>{(record?.Type) ?  record?.Type : "Apple Or Facebook User"}</p>
-      )
+        <div className="flex gap-2 items-center">
+           
+          <p className="font-medium">L033-032024-IST
+
+          </p>
+        </div>
+      ),
+    },
+    
+    {
+      title: "Week",
+      dataIndex: "name",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+           
+          <p className="font-medium">14
+          </p>
+        </div>
+      ),
     },
     {
-      title: 'Amount',
-      dataIndex: 'Amount',
-      key: 'phone',
+      title: "Amount",
+      dataIndex: "name",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+           
+          <p className="font-medium">€4800
+
+          </p>
+        </div>
+      ),
     },
+    
     {
-      title: "Date",
+        title: "Description",
+        dataIndex: "name",
+        key: "name",
+        render: (_, record) => (
+          <div className="flex gap-2 items-center">
+             
+            <p className="font-medium">Factuur
+  
+  
+            </p>
+          </div>
+        ),
+      },
+
+    {
+      title: "Start-Date",
       key: "date",
       dataIndex: "date",
       render: (_, record) => (
         // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
-        <p>34/04/24</p>
+        <p>12/04/24</p>
+      )
+    },
+    {
+      title: "Due-Date",
+      key: "date",
+      dataIndex: "date",
+      render: (_, record) => (
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>21/12/24</p>
+      )
+    },
+
+    
+
+    {
+      title: "paid",
+      key: "date",
+      dataIndex: "date",
+      render: (_, record) => (
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>No</p>
       )
     },
     
@@ -142,7 +216,7 @@ const onChange = (date, dateString) => {
         pagination={{
           total: dataSource.length,
           showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-          defaultPageSize: 1,
+          defaultPageSize: 2,
           showSizeChanger: false,
           itemRender: (current, type, originalElement) => {
             if (type === 'prev') {
@@ -229,4 +303,4 @@ const onChange = (date, dateString) => {
   );
 };
 
-export default Earning;
+export default Invoice;

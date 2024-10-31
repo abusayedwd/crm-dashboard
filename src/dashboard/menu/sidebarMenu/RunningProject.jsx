@@ -1,42 +1,39 @@
-import { Button, DatePicker, Input, Modal, Space, Table } from "antd";
+import { Input, Modal, DatePicker, Space, Table, Button } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
+ 
 import { CloseOutlined } from "@ant-design/icons";
-import styles from './../style.module.css'
-import './../table.css'
+import styles from './style.module.css'
 import { useNavigate } from "react-router-dom";
+ 
+ 
 const { Search } = Input;
  
 const dataSource = [
     {
-      key: '1',
-      
+      key: '1', 
       customerName: 'Bashar Islam',
-      email: 'abc@email.com',
-      address: 'Dhaka Bangladesh',
       date: '16 Apr 2024',
-      phone:'4536656'
+      Amount:'45',
+      Type: 'player',
     },
     {
-      key: '2',
-      applicationId: '12345678',
+      key: '2', 
       customerName: 'Bashar Islam',
-      email: 'abc@email.com',
-      address: 'Dhaka Bangladesh',
       date: '16 Apr 2024',
-      phone:'4536656'
+      Amount:'45',
+      Type: 'player',
     },
     {
-      key: '3',
-      applicationId: '12345678',
+      key: '3', 
       customerName: 'Bashar Islam',
-      email: 'abc@email.com',
-      address: 'Dhaka Bangladesh',
       date: '16 Apr 2024',
-      phone:'4536656'
+      Amount:'45',
+      Type: 'player',
     },
+     
 ]
-const EmployeeRatehr = () => {
+const Project = () => {
    const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -51,48 +48,97 @@ const EmployeeRatehr = () => {
       render: (text,_,index) => index + 1,
     },
     {
-      title: "Employee",
+      title: "Project-Name",
+      dataIndex: "customerName",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+          
+          {/* <p className="font-medium">{record?.customerName}</p> */}
+          <p className="font-medium">TTG Total Elektra B.V.
+          </p>
+        </div>
+      ),
+    },
+    
+    {
+      title: "Address",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">Absayed</p>
+          <p className="font-medium">Koninginnegracht 10
+          </p>
         </div>
       ),
     },
     {
-      title: "8 hourly rate",
+      title: "City",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">$453</p>
+          <p className="font-medium">Den Haag
+          </p>
+        </div>
+      ),
+    },
+    
+    {
+      title: "Postal Code",
+      dataIndex: "name",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+           
+          <p className="font-medium">3011 AL
+          </p>
         </div>
       ),
     },
     {
-      title: "10 hourly rate",
+      title: "Start-Date",
+      key: "date",
+      dataIndex: "date",
+      render: (_, record) => (
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>12/04/24</p>
+      )
+    },
+    {
+      title: "End-Date",
+      key: "date",
+      dataIndex: "date",
+      render: (_, record) => (
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>21/12/24</p>
+      )
+    },
+
+    {
+      title: "Description",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">$500</p>
+          <p className="font-medium">Electrical and data work.
+
+          </p>
         </div>
       ),
     },
+
     {
-      title: "Designation",
-      dataIndex: "name",
-      key: "name",
+      title: "Complete-status",
+      key: "date",
+      dataIndex: "date",
       render: (_, record) => (
-        <div className="flex gap-2 items-center">
-           
-          <p className="font-medium">Team leader</p>
-        </div>
-      ),
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>No</p>
+      )
     },
     
     {
@@ -132,11 +178,12 @@ const onChange = (date, dateString) => {
       <div className="rounded-t-lg mt-[24px]">
         <div className="flex py-[22px] justify-between items-center">
           <div>
-
-          <p className="text-header">Customer</p>
+          <p className="text-header">Earning</p>
           </div>
           <div>
-           <Space direction="vertical">
+          <button onClick={() => navigate('addrunning-project')} className=' bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg'>+Add Project</button>
+
+          <Space direction="vertical">
     <DatePicker onChange={onChange} />
    
   </Space>
@@ -145,12 +192,14 @@ const onChange = (date, dateString) => {
             marginLeft:'4px'
           }} placeholder="input search text" onSearch={onSearch} enterButton />
           </div>
+         
+          
         </div>
         <Table
-         pagination={{
+        pagination={{
           total: dataSource.length,
           showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-          defaultPageSize: 5,
+          defaultPageSize: 2,
           showSizeChanger: false,
           itemRender: (current, type, originalElement) => {
             if (type === 'prev') {
@@ -163,7 +212,6 @@ const onChange = (date, dateString) => {
           },
           className: styles.paginationCenter,
         }}
-      
           columns={columns}
           dataSource={dataSource}
         />
@@ -185,11 +233,11 @@ const onChange = (date, dateString) => {
         }
       >
       <div>
-        <div className="flex justify-center items-center gap-2 flex-col py-[16px] border-b border-b-gray-300">
-           <h1 className="text-xl font-medium">Player Details</h1>
+        <div className="flex justify-center items-center gap-2 flex-col border-b border-b-gray-300">
+          <p className="text-[26px] mb-[16px] font-medium">Transaction Details</p>
         </div>
         <div  className="p-[20px]">
-        <div className="flex justify-between border-b mt-4 py-[16px]">
+        <div className="flex justify-between border-b py-[16px]">
             <p>Full Name:</p>
             <p>
               {/* {user?.name ? user?.name : "N/A"} */}
@@ -228,10 +276,14 @@ const onChange = (date, dateString) => {
           </div>
 
         </div>
+        <div className="flex items-center gap-4">
+          <button className="px-2 py-2 bg-slate-100 border-2 rounded-e-md w-[50%]">Downloard</button>
+          <button className="px-2 py-2 bg-[#193664] text-white rounded-s-md w-[50%]">Print</button>
+        </div>
       </div>
       </Modal>
     </div>
   );
 };
 
-export default EmployeeRatehr;
+export default Project;

@@ -25,6 +25,14 @@ import Customer from "../dashboard/menu/sidebarMenu/Customer";
 import AddCustomer from "../dashboard/menu/sidebarMenu/AddCustomer";
 import Settings from "../dashboard/menu/sidebarMenu/Settings";
 import EmployeeList from "../dashboard/menu/sidebarMenu/employee/EmployeeList";
+import EmployeeRatehr from "../dashboard/menu/sidebarMenu/employee/EmployeeRatehr";
+import EmployeePayment from "../dashboard/menu/sidebarMenu/employee/EmployeePayment";
+import EmpoyeeWeeklyRate from "../dashboard/menu/sidebarMenu/employee/EmpoyeeWeeklyRate";
+import Project from "../dashboard/menu/sidebarMenu/RunningProject";
+import Invoice from "../dashboard/menu/sidebarMenu/Invoice";
+import Cost from "../dashboard/menu/sidebarMenu/Cost";
+import AddRunningProject from "../dashboard/menu/sidebarMenu/AddRunningProject";
+import PaymentRevolut from "../dashboard/menu/sidebarMenu/PaymentInRevolut";
  
 
 
@@ -88,6 +96,38 @@ export const router = createBrowserRouter([
             {
                 path:"employeelist",
                 element: <EmployeeList />
+            },   
+            {
+                path:"employeerate",
+                element: <EmployeeRatehr />
+            },   
+            {
+                path:"employeepayment",
+                element: <EmployeePayment />
+            },   
+            {
+                path:"employee-payment-weeklyrate",
+                element: <EmpoyeeWeeklyRate />
+            },   
+            {
+                path:"project",
+                element: <Project />
+            },   
+            {
+                path:"project/addrunning-project",
+                element:  <AddRunningProject />
+            },   
+            {
+                path:"cost",
+                element: <Cost />
+            },   
+            {
+                path:"invoice",
+                element: <Invoice />
+            },   
+            {
+                path:"paymentrevolut",
+                element: <PaymentRevolut />
             },   
          
             {
