@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useAddServiceMutation } from '../../../redux/features/service/addService';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddService = () => {
  
@@ -10,22 +12,33 @@ const AddService = () => {
   const [form] = Form.useForm();
   const [fileList, setFileList] = useState([]); 
   const handleFileChange = ({ fileList }) => setFileList(fileList);
-
+const [addservice] = useAddServiceMutation()
 
 const onFinish = async (values) => {
-   console.log(values , fileList);
+   console.log(values , fileList[0]?.originFileObj);
    
-//   const formData = new FormData()
+  const formData = new FormData()
   
-//   formData.append('aboutMe', values.about)
-//   formData.append('documentType', values.documentType)
+  formData.append('title', values.name)
+  formData.append('link', values.link)
+  if(fileList){
+
+    formData.append('serviceImage', fileList[0]?.originFileObj)
+  }
   
- 
-//   if(fileList){
+ try{
+  const res = await addservice(formData).unwrap();
+  console.log(res);
+   if(res?.statusCode == 200){
+    toast.success(res?.message)
+   }
+   setTimeout(() => {
+    navigate('/dashboard/home')
+   }, 1000);
   
-//     formData.append('document', fileList[0].originFileObj)
-//   }
-  // console.log(formData);
+ }catch(error){
+  console.log(error)
+ }
  
   
     
@@ -35,6 +48,7 @@ const onFinish = async (values) => {
 
   return (
     <div className=" w-[80%] mx-auto p-4 mt-12">
+      <Toaster ></Toaster>
       <h2 className="text-xl font-semibold text-header mb-4">Add Service</h2>
       <Form
         layout="vertical"

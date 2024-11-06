@@ -1,10 +1,12 @@
+
+
 import { apiSlice } from "../../api/apiSlice";
 
-const adminLogin = apiSlice.injectEndpoints({
+const updatePassword = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        adminLogin: builder.mutation({
+        updatePassword: builder.mutation({
             query: (value) => ({
-                url: `/users/signIn`,
+                url: `/users/cahngePassword`,
                 method: "POST",
                 body: value
             }) 
@@ -12,4 +14,4 @@ const adminLogin = apiSlice.injectEndpoints({
     })
 })
 
-export const {useAdminLoginMutation} = adminLogin;
+export const {useUpdatePasswordMutation} = updatePassword;

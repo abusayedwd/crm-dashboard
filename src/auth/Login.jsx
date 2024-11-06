@@ -4,16 +4,18 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HiOutlineMailOpen } from 'react-icons/hi';
 import { BiLock } from 'react-icons/bi';
+import { useAdminLoginMutation } from '../redux/features/auth/login';
+import toast, { Toaster } from 'react-hot-toast';
  
 
 const Login = () => {
     const [checkboxError, setCheckboxError] = useState('');
     const [isChecked, setIsChecked] = useState(false);
     const navigate = useNavigate()
-    const fcmToken = "Your-demo-fcm-token"; // Hardcoded demo FCM token
+  
     const [error, setError] = useState('')
  
-
+   const [adminLogin, {isLoading}] = useAdminLoginMutation()
     const handleCheckboxChange = (e) => {
         setIsChecked(e.target.checked);
         if (e.target.checked) {
@@ -29,40 +31,35 @@ const Login = () => {
         }
         console.log(values);
         
-
-        // // Include the fcmToken in the submitted values
-        // const formData = {
-        //     ...values,
-        //     fcmToken: fcmToken // Add fcmToken to the submission
-        // };
+ 
         
-        // try{
-        //     const res = await adminLogin(formData).unwrap();
-        //     // console.log(res);
-        //     if(res?.code == 200){
-        //         toast.success(res?.message)
-        //          localStorage.setItem('user',JSON.stringify(res?.data?.attributes))
-        //          localStorage.setItem('token', res?.data?.attributes?.tokens?.access?.token)
+        try{
+            const res = await adminLogin(values).unwrap();
+            console.log(res);
+            if(res?.statusCode == 200){
+                toast.success(res?.message)
+                 localStorage.setItem('user',JSON.stringify(res?.data?.attributes))
+                 localStorage.setItem('token', res?.data?.token)
 
                 
-        //     }
-        //     setTimeout(() => {
+            }
+            setTimeout(() => {
                 
-        //         navigate('/dashboard/home')
-        //     }, 1000);
+                navigate('/dashboard/home')
+            }, 1000);
             
-        // }catch(error){
-        //     console.log(error);
-        //     setError(error?.data?.message)
+        }catch(error){
+            console.log(error);
+            setError(error?.data?.message)
             
-        // }
+        }
        
 
     };
 
     return (
         <div className="mt-12 h-auto md:h-[680px] shadow-xl w-[80%] md:w-[1096px] mx-auto bg-white rounded-[8px]">
-        
+        <Toaster />
             <div className="flex flex-col-reverse md:flex-row justify-around gap-4 px-6 md:px-10 mt-4 md:mt-8 py-4">
                 <div className="h-[200px] hidden md:block md:h-[488px] mt-4 md:mt-[100px]">
                     <img src={signin} alt="Signin" className="w-full h-full object-cover" />
@@ -127,7 +124,7 @@ const Login = () => {
                         </div>
 
                         <Form.Item>
-                            {/* <p className='text-red-500 font-semibold'>{error}</p> */}
+                            <p className='text-red-500 font-semibold'>{error}</p>
                             <Button
                                 htmlType="submit"
                                 className="block w-full h-[52px] px-2 py-4 mt-2 !text-white !bg-primaryBg"

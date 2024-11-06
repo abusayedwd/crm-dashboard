@@ -5,39 +5,42 @@ import OTPInput from 'react-otp-input';
 
 import { Button } from 'antd';
 import { MdOutlineArrowBackIos } from 'react-icons/md';
+import { useVerifyOptMutation } from '../redux/features/auth/verifyOtp';
+import toast, { Toaster } from 'react-hot-toast';
  
  
 
 const VerifyOtp = () => {
-    // const location = useLocation()
-    // const queryParams = new URLSearchParams(location.search)
-    // const [error, setError] = useState('')
-    // const email = queryParams.get('email')
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
+    const [error, setError] = useState('')
+    const email = queryParams.get('email')
     const [otp, setOtp] = useState('');
      const navigate = useNavigate()
-//  const [verifyOtp, {isLoading}] = useVerifyEmailMutation()
+ const [verifyOtp, {isLoading}] = useVerifyOptMutation()
 
-    //  const verifyData = {
-    //     oneTimeCode : otp,
-    //        email: email 
-    //  }
+     const verifyData = {
+        code : otp,
+           email: email 
+     }
 
     const sendOtp = async() => { 
         console.log(otp);
-        // navigate(`/updatepassword`)
-        // try{
-        //     const res = await verifyOtp(verifyData).unwrap()
-        //     if(res?.code == 200 ){
-        //         toast.success(res?.message)
-        //         setTimeout(() => {
-        //             navigate(`/updatepassword?email=${email}`)
-        //         }, 1000)
-        //     }
-        // }catch(error){
-        //     console.log(error);
-        //     setError(error?.data?.message)
+  
+        try{
+            const res = await verifyOtp(verifyData).unwrap()
+            console.log(res)
+            if(res?.statusCode == 200 ){
+                toast.success(res?.message)
+                setTimeout(() => {
+                    navigate(`/updatepassword?email=${email}`)
+                }, 1000)
+            }
+        }catch(error){
+            console.log(error);
+            setError(error?.data?.message)
             
-        // }
+        }
         
 
     
@@ -91,7 +94,7 @@ const VerifyOtp = () => {
                             <small className='text-[14px] sm:text-[16px] font-medium text-[#00BF63] cursor-pointer'>Resend</small>
                         </div>
                     </div>
-                        {/* <p className="text-red-500 font-medium">{error}</p> */}
+                        <p className="text-red-500 font-medium">{error}</p>
                      
                         <Button  onClick={sendOtp} 
                          className="block w-full h-[52px] px-2 py-4 mt-2 !text-white !bg-primaryBg">

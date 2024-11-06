@@ -133,7 +133,7 @@ const onChange = (date, dateString) => {
         <div className="flex py-[22px] justify-between items-center">
           <div>
 
-          <p className="text-header">Customer</p>
+          <p className="text-header">Cost</p>
           </div>
           <div>
            <Space direction="vertical">

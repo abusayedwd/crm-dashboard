@@ -9,6 +9,8 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import './header.css' 
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { useChangePasswordMutation } from "../redux/features/auth/changePassword";
+import toast, { Toaster } from "react-hot-toast";
   
  
  
@@ -26,7 +28,7 @@ const Header = () => {
   const openModal = () => {
     setIsModalOpen(true);
   };
-
+  const [passwordChange] = useChangePasswordMutation()
   const handleLogOut = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -57,21 +59,22 @@ const Header = () => {
     const { confirmPassword, ...ChangePassword } = values;
     console.log("Form values: ", ChangePassword);
  
-  // try{
-  //   const res = await passwordChange(ChangePassword).unwrap();
-  //   if(res?.code == 200){
-  //     setIsModalOpen(false)
-  //     toast.success(res?.message)
-  //   }
-  //   setTimeout(() => { 
-  //     navigate('/dashboard/home')
-  //   }, 1000);
+  try{
+    const res = await passwordChange(ChangePassword).unwrap();
+    console.log(res)
+    if(res?.statusCode == 200){
+      setIsModalOpen(false)
+      toast.success(res?.message)
+    }
+    setTimeout(() => { 
+      navigate('/dashboard/home')
+    }, 1000);
     
-  // }catch(error){
-  //   console.log(error.data);
-  //   setError(error?.data?.message)
+  }catch(error){
+    console.log(error.data);
+    setError(error?.data?.message)
     
-  // }
+  }
 };
  
 
@@ -97,7 +100,7 @@ const menu = (
 
   return (
     <div className=" flex justify-between items-center shadow-xl mb-[24px] p-[16px] rounded-md !bg-primaryBg"> 
-    {/* <Toaster /> */}
+    <Toaster />
      <div className="text-white">
       <p className="text-header text-whiteText font-medium">Webcome !</p>
       {/* <h1>{profile?.data?.attributes?.name}</h1> */}
@@ -227,7 +230,7 @@ const menu = (
                   }
                 />
               </Form.Item>
-              {/* <p className="text-red-500 font-medium">{error}</p> */}
+              <p className="text-red-500 font-medium">{error}</p>
               <Form.Item>
                 <Button
                   type="primary"

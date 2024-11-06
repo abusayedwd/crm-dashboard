@@ -21,8 +21,6 @@ import Addsubscripton from "../dashboard/menu/subscription/Addsubscripton";
 import Editsubscription from "../dashboard/menu/subscription/Editsubscription";
 import AddProject from "../dashboard/home/project/AddProject";
 import AddService from "../dashboard/home/service/AddService";
-import Customer from "../dashboard/menu/sidebarMenu/Customer";
-import AddCustomer from "../dashboard/menu/sidebarMenu/AddCustomer";
 import Settings from "../dashboard/menu/sidebarMenu/Settings";
 import EmployeeList from "../dashboard/menu/sidebarMenu/employee/EmployeeList";
 import EmployeeRatehr from "../dashboard/menu/sidebarMenu/employee/EmployeeRatehr";
@@ -33,6 +31,13 @@ import Invoice from "../dashboard/menu/sidebarMenu/Invoice";
 import Cost from "../dashboard/menu/sidebarMenu/Cost";
 import AddRunningProject from "../dashboard/menu/sidebarMenu/AddRunningProject";
 import PaymentRevolut from "../dashboard/menu/sidebarMenu/PaymentInRevolut";
+import EditProject from "../dashboard/home/project/EditProject";
+import Customer from "../dashboard/menu/sidebarMenu/customer/Customer";
+import AddCustomer from "../dashboard/menu/sidebarMenu/customer/AddCustomer";
+import EditCustomer from "../dashboard/menu/sidebarMenu/customer/EditCustomer";
+import EditService from "../dashboard/home/service/EditService";
+import AddEmployee from "../dashboard/menu/sidebarMenu/employee/AddEmployee";
+import EditEmployee from "../dashboard/menu/sidebarMenu/employee/EditEmployee";
  
 
 
@@ -68,8 +73,16 @@ export const router = createBrowserRouter([
                 element: <AddProject />
             },
             {
+                path: "home/editproject/:id",
+                element: <EditProject />
+            },
+            {
                 path: "home/addservice",
                 element: <AddService />
+            },
+            {
+                path: "home/editservice/:id",
+                element: <EditService />
             },
 
             {
@@ -94,8 +107,20 @@ export const router = createBrowserRouter([
                 element: <AddCustomer />
             },   
             {
+                path:"customer/editcustomer/:id",
+                element: <EditCustomer />
+            },   
+            {
                 path:"employeelist",
                 element: <EmployeeList />
+            },   
+            {
+                path:"employeelist/addemployee",
+                element: <AddEmployee />
+            },   
+            {
+                path:"employeelist/editemployee/:id",
+                element: <EditEmployee />
             },   
             {
                 path:"employeerate",

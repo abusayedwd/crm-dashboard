@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Form, Input, Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useAddProjectMutation } from '../../../redux/features/project/addProject';
+import toast from 'react-hot-toast';
 
 const AddProject = () => {
  
@@ -11,21 +13,37 @@ const AddProject = () => {
   const [fileList, setFileList] = useState([]); 
   const handleFileChange = ({ fileList }) => setFileList(fileList);
 
+  const [addProject] = useAddProjectMutation()
 
 const onFinish = async (values) => {
    console.log(values , fileList);
+   console.log(fileList[0].originFileObj)
    
   const formData = new FormData()
   
-  formData.append('aboutMe', values.about)
-  formData.append('documentType', values.documentType)
+  formData.append('title', values.title)
+  formData.append('subTitle', values.subTitle)
+  formData.append('content', values.content)
   
  
   if(fileList){
   
-    formData.append('document', fileList[0].originFileObj)
+    formData.append('project', fileList[0].originFileObj)
   }
-  // console.log(formData);
+ try{
+  const res = await addProject(formData).unwrap();
+  // console.log(res)
+  if(res?.statusCode == 201){
+    toast.success(res?.message)
+  }
+  setTimeout(() => {
+    navigate('/dashboard/home')
+  }, 1000);
+
+ }catch(error){
+  console.log(error);
+  
+ }
  
   
     

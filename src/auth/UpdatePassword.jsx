@@ -8,6 +8,7 @@ import { MdOutlineArrowBackIos } from 'react-icons/md';
  
  
 import toast, { Toaster } from 'react-hot-toast';
+import { useUpdatePasswordMutation } from '../redux/features/auth/updatePassword';
 
 const UpdatePassword = () => {
   const [form] = Form.useForm();
@@ -15,10 +16,11 @@ const UpdatePassword = () => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
-//   const location = useLocation();
-//  const queryParams = new URLSearchParams(location.search)
-//  const email = queryParams.get('email')
+  const location = useLocation();
+ const queryParams = new URLSearchParams(location.search)
+ const email = queryParams.get('email')
 
+ const [reset] = useUpdatePasswordMutation()
  
   const handlePasswordVisibility = () => setPasswordVisible(!passwordVisible);
   const handleConfirmPasswordVisibility = () => setConfirmPasswordVisible(!confirmPasswordVisible);
@@ -35,26 +37,28 @@ const UpdatePassword = () => {
   
 
   const resetPassword = async (values) => {
-    // const { password } = values;
-    // const resetData = {
-    //   password,
-    //   email
-    // }
+    const { password } = values;
+    const resetData = {
+      password,
+      email
+    }
  console.log(values);
- navigate('/')
+ 
    
-    // try{
-    //   const res = await reset(resetData).unwrap()
-    //   if(res?.code == 200){
-    //     toast.success(res?.message)
-    //     setTimeout(() => {
-    //       navigate('/')
-    //     }, 1000);
-    //   }
-    // }catch(error){
-    //   console.log(error);
+    try{
+      const res = await reset(resetData).unwrap()
+      console.log(res);
       
-    // }
+      if(res?.statusCode == 200){
+        toast.success(res?.message)
+        setTimeout(() => {
+          navigate('/')
+        }, 1000);
+      }
+    }catch(error){
+      console.log(error);
+      
+    }
 
 
     };

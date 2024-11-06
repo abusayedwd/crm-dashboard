@@ -1,10 +1,12 @@
+
+
 import { apiSlice } from "../../api/apiSlice";
 
-const adminLogin = apiSlice.injectEndpoints({
+const verifyOpt = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        adminLogin: builder.mutation({
+        verifyOpt: builder.mutation({
             query: (value) => ({
-                url: `/users/signIn`,
+                url: `/users/verify-code`,
                 method: "POST",
                 body: value
             }) 
@@ -12,4 +14,4 @@ const adminLogin = apiSlice.injectEndpoints({
     })
 })
 
-export const {useAdminLoginMutation} = adminLogin;
+export const {useVerifyOptMutation} = verifyOpt;
