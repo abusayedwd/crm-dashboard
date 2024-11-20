@@ -48,7 +48,7 @@ try{
   return (
     <div className="w-[80%] mx-auto p-8 mt-8 bg-white shadow-md rounded-lg">
         <Toaster />
-      <h2 className="text-2xl font-semibold mb-6 text-center">Add Employee</h2>
+      <h2 className="text-[20px] font-semibold mb-6 ">Add Employee</h2>
       <Form
         form={form}
         layout="vertical"

@@ -1,0 +1,28 @@
+.custom-table .ant-table-thead > tr > th {
+    background-color: #f5a623;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .custom-table .ant-table-tbody > tr > td {
+    text-align: center;
+  }
+  
+  .custom-table .sl-no-column {
+    width: 50px;
+  }
+  
+  .custom-table .nowrap-text {
+    white-space: nowrap;
+  }
+  
+  .custom-table {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .custom-table .ant-table {
+    background-color: #fff;
+  }
+  

@@ -1,13 +1,11 @@
 
-
-
 import { apiSlice } from "../../api/apiSlice";
 
-const addEmployee = apiSlice.injectEndpoints({
+const addHourlyRate = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        addEmployee: builder.mutation({
+        addHourlyRate: builder.mutation({
             query: (value) => ({
-                url: `/employee-add/createEmployee`,
+                url: `/employee-hourlyRate/createHourlyRate`,
                 method: "POST",
                 body: value
             }) ,
@@ -16,4 +14,4 @@ const addEmployee = apiSlice.injectEndpoints({
     })
 })
 
-export const {useAddEmployeeMutation} = addEmployee;
+export const {useAddHourlyRateMutation} = addHourlyRate;

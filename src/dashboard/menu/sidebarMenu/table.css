@@ -14,15 +14,19 @@
     background-color: #FF7420 !important; /* Header background color */
     color: #FFFF !important;
     font-weight: bold;
+   
+    
   }
   
   .ant-table-tbody > tr > td {
     /* background-color: #fdf6e3; Body background color */
     color: #000;
+  
   } 
   
   .ant-table-tbody > tr > td:last-child {
     text-align: center;
+  
   }
   
   .anticon {

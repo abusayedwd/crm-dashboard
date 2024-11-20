@@ -23,13 +23,13 @@ import AddProject from "../dashboard/home/project/AddProject";
 import AddService from "../dashboard/home/service/AddService";
 import Settings from "../dashboard/menu/sidebarMenu/Settings";
 import EmployeeList from "../dashboard/menu/sidebarMenu/employee/EmployeeList";
-import EmployeeRatehr from "../dashboard/menu/sidebarMenu/employee/EmployeeRatehr";
+ 
 import EmployeePayment from "../dashboard/menu/sidebarMenu/employee/EmployeePayment";
 import EmpoyeeWeeklyRate from "../dashboard/menu/sidebarMenu/employee/EmpoyeeWeeklyRate";
-import Project from "../dashboard/menu/sidebarMenu/RunningProject";
-import Invoice from "../dashboard/menu/sidebarMenu/Invoice";
-import Cost from "../dashboard/menu/sidebarMenu/Cost";
-import AddRunningProject from "../dashboard/menu/sidebarMenu/AddRunningProject";
+import Project from "../dashboard/menu/sidebarMenu/runningProject/RunningProject";
+ 
+import Cost from "../dashboard/menu/sidebarMenu/cost/Cost";
+import AddRunningProject from "../dashboard/menu/sidebarMenu/runningProject/AddRunningProject";
 import PaymentRevolut from "../dashboard/menu/sidebarMenu/PaymentInRevolut";
 import EditProject from "../dashboard/home/project/EditProject";
 import Customer from "../dashboard/menu/sidebarMenu/customer/Customer";
@@ -38,6 +38,20 @@ import EditCustomer from "../dashboard/menu/sidebarMenu/customer/EditCustomer";
 import EditService from "../dashboard/home/service/EditService";
 import AddEmployee from "../dashboard/menu/sidebarMenu/employee/AddEmployee";
 import EditEmployee from "../dashboard/menu/sidebarMenu/employee/EditEmployee";
+import EmployeeRatehr from "../dashboard/menu/sidebarMenu/employee/EmployeeRatehr";
+import AddHourlyRate from "../dashboard/menu/sidebarMenu/employee/AddHourlyRateEmployee";
+import EditHourlyRateEmployee from "../dashboard/menu/sidebarMenu/employee/EditHourlyRateEmployee";
+import AddEmployeePayment from "../dashboard/menu/sidebarMenu/employee/AddEmployeePayment";
+import EditEmployeePayment from "../dashboard/menu/sidebarMenu/employee/EditEmployeePayment";
+import EmployeePerdayHour from "../dashboard/menu/sidebarMenu/employeePerDayHour/EmployeePerdayHour";
+import UpdateRunningProject from "../dashboard/menu/sidebarMenu/runningProject/UpdateProject";
+import AddEmployeeHourlyday from "../dashboard/menu/sidebarMenu/employeePerDayHour/AddEmployeeHourlyDay";
+import EditHourlyRatePerDay from "../dashboard/menu/sidebarMenu/employeePerDayHour/EditHourlyRatePerDay";
+import AddCostPage from "../dashboard/menu/sidebarMenu/cost/AddCost";
+import Invoice from "../dashboard/menu/sidebarMenu/InvoiceLenbec/Invoice";
+import AddInvoice from "../dashboard/menu/sidebarMenu/InvoiceLenbec/addInvoice";
+ 
+ 
  
 
 
@@ -127,9 +141,47 @@ export const router = createBrowserRouter([
                 element: <EmployeeRatehr />
             },   
             {
+                path:"employeerate/addhourlyrate",
+                element: <AddHourlyRate />
+            },   
+            {
+                path:"employeerate/edithourlyrate/:id",
+                element: <EditHourlyRateEmployee />
+            },   
+              
+
+            // Employee payment ************** 
+            {
                 path:"employeepayment",
                 element: <EmployeePayment />
-            },   
+            }, 
+            {
+                path:"employeepayment/addpayment",
+                element: <AddEmployeePayment />
+            },
+            {
+                path:"employeepayment/editpayment/:id",
+                element: <EditEmployeePayment />
+            },
+            // EmployeeHourPar day********///
+         
+            {
+                path: "employee-hourper-day",
+                element: <EmployeePerdayHour />
+            },
+            {
+                path: "employee-hourper-day/addemployeeper-day",
+                element: <AddEmployeeHourlyday />
+            },
+            {
+                path: "employee-hourper-day/editemployeeper-day/:id",
+                element: <EditHourlyRatePerDay />
+            },
+
+
+
+
+            // Weekly rate Employee***********  
             {
                 path:"employee-payment-weeklyrate",
                 element: <EmpoyeeWeeklyRate />
@@ -143,12 +195,26 @@ export const router = createBrowserRouter([
                 element:  <AddRunningProject />
             },   
             {
+                path:"project/updaterunning-project/:id",
+                element:  <UpdateRunningProject />
+            },   
+
+            {
                 path:"cost",
                 element: <Cost />
-            },   
+            },  
+            {
+                path:"cost/addcost",
+                element: <AddCostPage />
+            },  
+
             {
                 path:"invoice",
                 element: <Invoice />
+            },   
+            {
+                path:"invoice/addinvoice",
+                element: <AddInvoice />
             },   
             {
                 path:"paymentrevolut",

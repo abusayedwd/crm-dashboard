@@ -1,67 +1,59 @@
-import { Button, DatePicker, Input, Modal, Space, Table } from "antd";
+import { Input, Modal, DatePicker, Space, Table, Button } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
-import { CloseOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
+
+import { CloseOutlined, EditOutlined } from "@ant-design/icons";
 import styles from "./../style.module.css";
-import "./../table.css";
 import { useNavigate } from "react-router-dom";
-import { useAllCustomerQuery } from "../../../../redux/features/customer/allCustomer";
-import { useDeleteCustomerMutation } from "../../../../redux/features/customer/deleteCustomer";
+import { useShowAllProjectQuery } from "../../../../redux/features/runningProject/allProject";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { useProjectDeleteMutation } from "../../../../redux/features/runningProject/projectDelete";
 import toast from "react-hot-toast";
+
 const { Search } = Input;
 
 const dataSource = [
   {
     key: "1",
-
     customerName: "Bashar Islam",
-    email: "abc@email.com",
-    address: "Dhaka Bangladesh",
     date: "16 Apr 2024",
-    phone: "4536656",
+    Amount: "45",
+    Type: "player",
   },
   {
     key: "2",
-    applicationId: "12345678",
     customerName: "Bashar Islam",
-    email: "abc@email.com",
-    address: "Dhaka Bangladesh",
     date: "16 Apr 2024",
-    phone: "4536656",
+    Amount: "45",
+    Type: "player",
   },
   {
     key: "3",
-    applicationId: "12345678",
     customerName: "Bashar Islam",
-    email: "abc@email.com",
-    address: "Dhaka Bangladesh",
     date: "16 Apr 2024",
-    phone: "4536656",
+    Amount: "45",
+    Type: "player",
   },
 ];
-const Customer = () => {
+const Project = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data: customers, isLoading } = useAllCustomerQuery();
-  // console.log(customers?.data);
-  const [deleteCustomer] = useDeleteCustomerMutation()
-
-  const customer = async(id) => {
-    console.log('clicek', id);
-    
+  const { data: runningProject } = useShowAllProjectQuery();
+  console.log(runningProject);
+  const [pDelete, {isLoading}] = useProjectDeleteMutation()
+  
+  const projectDelete = async (id) => {
+         
     try{
-     const res = await deleteCustomer(id).unwrap();
-         if(res.statusCode == 200){
-          setTimeout(() => {
-            toast.success(res?.message) 
-          }, 1000);
-         }
+      const res = await pDelete(id).unwrap();
+      if(res?.statusCode == 200){
+        toast.success(res?.message)
+      }
     }catch(error){
       console.log(error)
     }
   }
-
   // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
   const columns = [
@@ -72,21 +64,17 @@ const Customer = () => {
       render: (text, _, index) => index + 1,
     },
     {
-      title: "Customer",
-      dataIndex: "name",
+      title: "Project-Name",
+      dataIndex: "customerName",
       key: "name",
       render: (_, record) => (
-        <div key={record._id} className="flex gap-2 items-center">
-          <p className="font-medium">{record?.name}</p>
+        <div className="flex gap-2 items-center">
+          {/* <p className="font-medium">{record?.customerName}</p> */}
+          <p className="font-medium"> {record?.projectName}</p>
         </div>
       ),
     },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-      render: (_, record) => <p>{record?.email}</p>,
-    },
+
     {
       title: "Address",
       dataIndex: "name",
@@ -98,53 +86,63 @@ const Customer = () => {
       ),
     },
     {
-      title: "Postal Code",
-      dataIndex: "name",
-      key: "name",
-      render: (_, record) => (
-        <div className="flex gap-2 items-center">
-          <p className="font-medium">{record?.postalCode}</p>
-        </div>
-      ),
-    },
-    {
       title: "City",
       dataIndex: "name",
       key: "name",
       render: (_, record) => (
         <div className="flex gap-2 items-center">
-          <p className="font-medium"> {record?.city}</p>
-        </div>
-      ),
-    },
-    {
-      title: "Contact Person",
-      dataIndex: "name",
-      key: "name",
-      render: (_, record) => (
-        <div className="flex gap-2 items-center">
-          <p className="font-medium">{record?.contactPerson}</p>
-        </div>
-      ),
-    },
-    {
-      title: "Mobile No.",
-      dataIndex: "name",
-      key: "name",
-      render: (_, record) => (
-        <div className="flex gap-2 items-center">
-          <p className="font-medium">+{record?.mobile}</p>
+          <p className="font-medium">{record?.city}</p>
         </div>
       ),
     },
 
     {
-      title: "Billing Email",
-      key: "mail",
-      dataIndex: "email",
+      title: "Postal Code",
+      dataIndex: "name",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+          <p className="font-medium">{record?.postCode}</p>
+        </div>
+      ),
+    },
+    {
+      title: "Start-Date",
+      key: "date",
+      dataIndex: "date",
       render: (_, record) => (
         // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
-        <p>{record?.billingEmail}</p>
+        <p>{record?.startDate}</p>
+      ),
+    },
+    {
+      title: "End-Date",
+      key: "date",
+      dataIndex: "date",
+      render: (_, record) => (
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>{record?.endDate}</p>
+      ),
+    },
+
+    {
+      title: "Description",
+      dataIndex: "name",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+          <p className="font-medium">{record?.description}</p>
+        </div>
+      ),
+    },
+
+    {
+      title: "Complete-status",
+      key: "date",
+      dataIndex: "date",
+      render: (_, record) => (
+        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        <p>No</p>
       ),
     },
 
@@ -153,21 +151,19 @@ const Customer = () => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          {/* <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" /> */}
-          <button onClick={() => navigate(`editcustomer/${record?._id}`)} className="flex items-center px-2 py-1 bg-[#008000] text-[#FFFFFF] font-semibold rounded hover:bg-gray-800 transition duration-300">
-            <EditOutlined className="mr-2" />
-            Edit
-          </button>
-          
           <button
-   onClick={() => customer(record._id)}
-  className="flex items-center px-2 py-1 bg-[#FF0000] text-[#FFFFFF] font-semibold rounded hover:bg-gray-800 transition duration-300"
->
-  <DeleteOutlined className="mr-2" />
-  Delete
-</button>
+            onClick={() => navigate(`updaterunning-project/${record?._id}`)}
+            className="flex items-center px-2 py-1   text-[#87884a] font-semibold rounded hover:bg-gray-800 transition duration-300"
+          >
+            <EditOutlined className="mr-2 text-[18px]" />
+          </button>
 
-          {/* <a><RxCross2 size={18} className='text-[red]'/></a> */}
+          <button
+            onClick={() => projectDelete(record._id)}
+            className="flex items-center px-2 py-1   text-[#f83232] font-semibold rounded hover:bg-gray-800 transition duration-300"
+          >
+            <RiDeleteBin6Line className="mr-2 text-[18px]" />
+          </button>
         </Space>
       ),
     },
@@ -187,21 +183,24 @@ const Customer = () => {
   //     console.log(page);
   //   };
   const onSearch = (value, _e, info) => console.log(info?.source, value);
- 
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  };
   return (
     <div className="">
       <div className="rounded-t-lg mt-[24px]">
         <div className="flex py-[22px] justify-between items-center">
           <div>
-            <p className="text-header">Customer</p>
+            <p className="text-header">Project List</p>
           </div>
           <div>
             <button
-              onClick={() => navigate("addcustomer")}
+              onClick={() => navigate("addrunning-project")}
               className=" bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg"
             >
-              +Add Customer
+              +Add Project
             </button>
+
             {/* <Space direction="vertical">
               <DatePicker onChange={onChange} />
             </Space> */}
@@ -218,10 +217,10 @@ const Customer = () => {
         </div>
         <Table
           pagination={{
-            total: customers?.data.length,
+            total: runningProject?.data?.attributes.length,
             showTotal: (total, range) =>
               `${range[0]}-${range[1]} of ${total} items`,
-            defaultPageSize: 5,
+            defaultPageSize: 10,
             showSizeChanger: false,
             itemRender: (current, type, originalElement) => {
               if (type === "prev") {
@@ -239,7 +238,7 @@ const Customer = () => {
             className: styles.paginationCenter,
           }}
           columns={columns}
-          dataSource={customers?.data}
+          dataSource={runningProject?.data?.attributes}
         />
       </div>
       <Modal
@@ -259,11 +258,13 @@ const Customer = () => {
         }
       >
         <div>
-          <div className="flex justify-center items-center gap-2 flex-col py-[16px] border-b border-b-gray-300">
-            <h1 className="text-xl font-medium">Player Details</h1>
+          <div className="flex justify-center items-center gap-2 flex-col border-b border-b-gray-300">
+            <p className="text-[26px] mb-[16px] font-medium">
+              Transaction Details
+            </p>
           </div>
           <div className="p-[20px]">
-            <div className="flex justify-between border-b mt-4 py-[16px]">
+            <div className="flex justify-between border-b py-[16px]">
               <p>Full Name:</p>
               <p>
                 {/* {user?.name ? user?.name : "N/A"} */}
@@ -300,10 +301,18 @@ const Customer = () => {
               </p>
             </div>
           </div>
+          <div className="flex items-center gap-4">
+            <button className="px-2 py-2 bg-slate-100 border-2 rounded-e-md w-[50%]">
+              Downloard
+            </button>
+            <button className="px-2 py-2 bg-[#193664] text-white rounded-s-md w-[50%]">
+              Print
+            </button>
+          </div>
         </div>
       </Modal>
     </div>
   );
 };
 
-export default Customer;
+export default Project;

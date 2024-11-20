@@ -1,9 +1,13 @@
+
+
 import { Input, Modal, DatePicker, Space, Table, Button } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
  
 import { CloseOutlined } from "@ant-design/icons";
-import styles from './style.module.css'
+import styles from './../style.module.css'
+import { useNavigate } from "react-router-dom";
+import { useAllInvoiceQuery } from "../../../../redux/features/Invoice Lenbec/allInvoice";
  
  
 const { Search } = Input;
@@ -33,10 +37,11 @@ const dataSource = [
      
 ]
 const Invoice = () => {
- 
+  const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false);
 
- 
+  const {data: invoiceData} = useAllInvoiceQuery()
+  console.log(invoiceData?.data)
 // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
  
   const columns = [
@@ -53,7 +58,7 @@ const Invoice = () => {
         render: (_, record) => (
           <div className="flex gap-2 items-center">
              
-            <p className="font-medium">Steegman
+            <p className="font-medium">{record?.customer?.name}
   
             </p>
           </div>
@@ -67,7 +72,7 @@ const Invoice = () => {
         <div className="flex gap-2 items-center">
           
           {/* <p className="font-medium">{record?.customerName}</p> */}
-          <p className="font-medium">TTG Total Elektra B.V.
+          <p className="font-medium">{record?.projectList?.projectName}
           </p>
         </div>
       ),
@@ -81,7 +86,7 @@ const Invoice = () => {
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">L033-032024-IST
+          <p className="font-medium"> {record?.invoiceNo}
 
           </p>
         </div>
@@ -95,7 +100,7 @@ const Invoice = () => {
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">14
+          <p className="font-medium">{record?.week}
           </p>
         </div>
       ),
@@ -107,7 +112,7 @@ const Invoice = () => {
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">€4800
+          <p className="font-medium">€ {record?.amount}
 
           </p>
         </div>
@@ -121,7 +126,7 @@ const Invoice = () => {
         render: (_, record) => (
           <div className="flex gap-2 items-center">
              
-            <p className="font-medium">Factuur
+            <p className="font-medium"> {record?.description}
   
   
             </p>
@@ -130,12 +135,12 @@ const Invoice = () => {
       },
 
     {
-      title: "Start-Date",
+      title: "Date",
       key: "date",
       dataIndex: "date",
       render: (_, record) => (
-        // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
-        <p>12/04/24</p>
+        <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
+        
       )
     },
     {
@@ -144,7 +149,8 @@ const Invoice = () => {
       dataIndex: "date",
       render: (_, record) => (
         // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
-        <p>21/12/24</p>
+        <p>{record?.dueDate
+}</p>
       )
     },
 
@@ -156,7 +162,7 @@ const Invoice = () => {
       dataIndex: "date",
       render: (_, record) => (
         // <p>{record?.createdAt?.split("T")[0] ? record?.createdAt?.split("T")[0] : "N/A"}</p>
-        <p>No</p>
+        <p>{record?.paid}</p>
       )
     },
     
@@ -197,9 +203,15 @@ const onChange = (date, dateString) => {
       <div className="rounded-t-lg mt-[24px]">
         <div className="flex py-[22px] justify-between items-center">
           <div>
-          <p className="text-header">Earning</p>
+          <p className="text-header">Invoice Lenbec</p>
           </div>
           <div>
+        <button
+            onClick={() => navigate('addinvoice')}
+            className="bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg"
+          >
+            + Add Hour Rate
+          </button>
           <Space direction="vertical">
     <DatePicker onChange={onChange} />
    
@@ -214,7 +226,7 @@ const onChange = (date, dateString) => {
         </div>
         <Table
         pagination={{
-          total: dataSource.length,
+          total: invoiceData?.data?.length,
           showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
           defaultPageSize: 2,
           showSizeChanger: false,
@@ -230,7 +242,7 @@ const onChange = (date, dateString) => {
           className: styles.paginationCenter,
         }}
           columns={columns}
-          dataSource={dataSource}
+          dataSource={invoiceData?.data}
         />
       </div>
       <Modal

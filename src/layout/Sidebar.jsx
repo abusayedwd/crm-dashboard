@@ -97,6 +97,17 @@ const Sidebar = () => {
                   >
                     <span className="hidden ml-2 sm:block">Employee Payment</span>
                   </NavLink>
+
+                  <NavLink
+                    to="employee-hourper-day"
+                    className={({ isActive }) =>
+                      isActive
+                        ? "flex p-[10px] m-[6px] cursor-pointer items-center font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
+                        : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center font-medium rounded-lg"
+                    }
+                  >
+                    <span className="hidden ml-2 sm:block">Employee hrs PerDay</span>
+                  </NavLink>
                   <NavLink
                     to="employee-payment-weeklyrate"
                     className={({ isActive }) =>

@@ -46,7 +46,7 @@ const EmployeeList = () => {
   const [user, setUser] = useState({})
  const {data: employees, isLoading} = useAllEmployeeQuery()
  const [deleteEmployee] = useDeleteEmployeeMutation()
-//  console.log(employees?.data);
+ console.log(employees);
 //  console.log(user);
  
 // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
@@ -75,7 +75,7 @@ const employeeDelete = async (id)=> {
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">{record.name}</p>
+          <p className="font-medium">{record?.name}</p>
         </div>
       ),
     },
@@ -87,7 +87,7 @@ const employeeDelete = async (id)=> {
       render: (_, record) => (
         <div className="flex gap-2 items-center">
            
-          <p className="font-medium">{record.hrId}</p>
+          <p className="font-medium">{record?.hrId}</p>
         </div>
       ),
     },
@@ -209,9 +209,9 @@ const employeeDelete = async (id)=> {
 //     console.log(page);
 //   };
 const onSearch = (value, _e, info) => console.log(info?.source, value);
-const onChange = (date, dateString) => {
-  console.log(date, dateString);
-};
+// const onChange = (date, dateString) => {
+//   console.log(date, dateString);
+// };
   return (
     <div className="">
        <Toaster />
@@ -223,10 +223,10 @@ const onChange = (date, dateString) => {
           </div>
           <div>
           <button onClick={() => navigate('addemployee')} className=' bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg'>+Add Employee</button>
-          <Space direction="vertical">
+          {/* <Space direction="vertical">
     <DatePicker onChange={onChange} />
    
-  </Space>
+  </Space> */}
           <Search style={{
             width:"200px",
             marginLeft:'4px'
@@ -235,7 +235,7 @@ const onChange = (date, dateString) => {
         </div>
         <Table
          pagination={{
-          total: employees?.data.length,
+          total: employees?.data?.length,
           showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
           defaultPageSize: 5,
           showSizeChanger: false,
@@ -252,7 +252,7 @@ const onChange = (date, dateString) => {
         }}
       
           columns={columns}
-          dataSource={employees?.data}
+          dataSource={employees?.data?.attributes}
         />
       </div>
       <Modal
@@ -364,3 +364,5 @@ const onChange = (date, dateString) => {
 };
 
 export default EmployeeList;
+
+ 
