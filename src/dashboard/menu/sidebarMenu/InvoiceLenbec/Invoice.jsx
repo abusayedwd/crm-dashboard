@@ -166,18 +166,18 @@ const Invoice = () => {
       )
     },
     
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
+    // {
+    //   title: "Action",
+    //   key: "action",
+    //   render: (_, record) => (
+    //     <Space size="middle">
          
-            <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" />
+    //         <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" />
           
-          {/* <a><RxCross2 size={18} className='text-[red]'/></a> */}
-        </Space>
-      ),
-    },
+    //       {/* <a><RxCross2 size={18} className='text-[red]'/></a> */}
+    //     </Space>
+    //   ),
+    // },
   ];
   
   const handleView = () => {
@@ -210,16 +210,16 @@ const onChange = (date, dateString) => {
             onClick={() => navigate('addinvoice')}
             className="bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg"
           >
-            + Add Hour Rate
+            + Add Invoice
           </button>
-          <Space direction="vertical">
+          {/* <Space direction="vertical">
     <DatePicker onChange={onChange} />
    
   </Space>
           <Search style={{
             width:"200px",
             marginLeft:'4px'
-          }} placeholder="input search text" onSearch={onSearch} enterButton />
+          }} placeholder="input search text" onSearch={onSearch} enterButton /> */}
           </div>
          
           
@@ -228,7 +228,7 @@ const onChange = (date, dateString) => {
         pagination={{
           total: invoiceData?.data?.length,
           showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-          defaultPageSize: 2,
+          defaultPageSize: 10,
           showSizeChanger: false,
           itemRender: (current, type, originalElement) => {
             if (type === 'prev') {

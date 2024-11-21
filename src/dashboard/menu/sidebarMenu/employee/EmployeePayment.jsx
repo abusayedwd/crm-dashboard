@@ -133,12 +133,12 @@ const EmployeePayment = () => {
             <DatePicker onChange={onChange} />
           </Space> */}
           <div>
-          <button
+          {/* <button
               onClick={() => navigate("addpayment")}
               className=" bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg"
             >
               +Add Employee Payment
-            </button>
+            </button> */}
           <Search
             style={{ width: "200px", marginLeft: '4px' }}
             placeholder="input search text"
