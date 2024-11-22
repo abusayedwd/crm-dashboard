@@ -30,7 +30,7 @@ import Project from "../dashboard/menu/sidebarMenu/runningProject/RunningProject
  
 import Cost from "../dashboard/menu/sidebarMenu/cost/Cost";
 import AddRunningProject from "../dashboard/menu/sidebarMenu/runningProject/AddRunningProject";
-import PaymentRevolut from "../dashboard/menu/sidebarMenu/PaymentInRevolut";
+ 
 import EditProject from "../dashboard/home/project/EditProject";
 import Customer from "../dashboard/menu/sidebarMenu/customer/Customer";
 import AddCustomer from "../dashboard/menu/sidebarMenu/customer/AddCustomer";
@@ -50,6 +50,9 @@ import EditHourlyRatePerDay from "../dashboard/menu/sidebarMenu/employeePerDayHo
 import AddCostPage from "../dashboard/menu/sidebarMenu/cost/AddCost";
 import Invoice from "../dashboard/menu/sidebarMenu/InvoiceLenbec/Invoice";
 import AddInvoice from "../dashboard/menu/sidebarMenu/InvoiceLenbec/addInvoice";
+import PaymentRevolut from "../dashboard/menu/sidebarMenu/revolutePayment/PaymentInRevolut";
+import AddPayment from "../dashboard/menu/sidebarMenu/revolutePayment/AddPayment";
+import Editrevolutepayment from "../dashboard/menu/sidebarMenu/revolutePayment/EditRevolutePayment";
  
  
  
@@ -219,6 +222,14 @@ export const router = createBrowserRouter([
             {
                 path:"paymentrevolut",
                 element: <PaymentRevolut />
+            },   
+            {
+                path:"paymentrevolut/addpayment",
+                element: <AddPayment />
+            },   
+            {
+                path:"paymentrevolut/editrevolutepayment/:id",
+                element: <Editrevolutepayment />
             },   
          
             {

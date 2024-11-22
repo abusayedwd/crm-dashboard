@@ -140,13 +140,13 @@ import { useNavigate } from "react-router-dom";
 const { Option } = Select;
 
 const AddInvoice = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [selectedProject, setSelectedProject] = useState(null);
   const [name, setName] = useState(null);
 
   const { data: projects } = useProjectListQuery();
   const { data: customerName } = useCustomerNameQuery();
-  const [addInvoice, {isLoading}] = useAddInvoiceMutation()
+  const [addInvoice, { isLoading }] = useAddInvoiceMutation();
   // console.log(customerName?.data);
   // State for form inputs
   const [formValues, setFormValues] = useState({
@@ -182,20 +182,18 @@ const AddInvoice = () => {
       customer: name,
     };
     console.log(data);
-   try{
-    const res = await addInvoice(data).unwrap();
-    console.log(res)
-    if(res?.statusCode == 201){
-      toast.success(res?.message)
+    try {
+      const res = await addInvoice(data).unwrap();
+      console.log(res);
+      if (res?.statusCode == 201) {
+        toast.success(res?.message);
+      }
+      setTimeout(() => {
+        navigate("/dashboard/invoice");
+      }, 1000);
+    } catch (error) {
+      console.log(error);
     }
-    setTimeout(() => {
-      navigate('/dashboard/invoice')
-    }, 1000);
-   }catch(error){
-    console.log(error)
-   }
-
-
   };
   const handleProjectChange = (value) => setSelectedProject(value);
   const projectOptions = projects?.data?.map((project) => ({
@@ -243,9 +241,7 @@ const AddInvoice = () => {
             <Input
               placeholder="Enter invoice number"
               value={formValues.invoiceNumber}
-              onChange={(e) =>
-                handleInputChange("invoiceNo", e.target.value)
-              }
+              onChange={(e) => handleInputChange("invoiceNo", e.target.value)}
             />
           </div>
           <div>
@@ -297,7 +293,12 @@ const AddInvoice = () => {
           </div>
         </div>
         <div className="mt-8 flex justify-center">
-          <Button type="primary" size="large" loading = {isLoading} onClick={handleSubmit}>
+          <Button
+            type="primary"
+            size="large"
+            loading={isLoading}
+            onClick={handleSubmit}
+          >
             Submit
           </Button>
         </div>

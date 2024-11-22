@@ -41,7 +41,7 @@ const Invoice = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
   const {data: invoiceData} = useAllInvoiceQuery()
-  console.log(invoiceData?.data)
+  // console.log(invoiceData?.data)
 // const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
  
   const columns = [
@@ -211,19 +211,10 @@ const onChange = (date, dateString) => {
             className="bg-primaryBg mr-4 text-[#FFFFFF] p-1 rounded-lg"
           >
             + Add Invoice
-          </button>
-          {/* <Space direction="vertical">
-    <DatePicker onChange={onChange} />
-   
-  </Space>
-          <Search style={{
-            width:"200px",
-            marginLeft:'4px'
-          }} placeholder="input search text" onSearch={onSearch} enterButton /> */}
-          </div>
-         
-          
+          </button> 
+          </div> 
         </div>
+        
         <Table
         pagination={{
           total: invoiceData?.data?.length,

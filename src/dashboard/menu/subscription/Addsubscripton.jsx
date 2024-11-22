@@ -51,7 +51,7 @@ const Addsubscriptin = () => {
                     rules={[{ required: true, message: 'Missing feature' }]}
                     className=""
                   >
-                    <Input placeholder="Enter feature" />
+                    <Input placeholder="Enter feature"/>
                   </Form.Item>
                   <Form.Item>
 
