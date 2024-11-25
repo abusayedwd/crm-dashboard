@@ -176,7 +176,7 @@ const EmployeeRatehr = () => {
       <div className="rounded-t-lg mt-[24px]">
         <div className="flex py-[22px] justify-between items-center">
           <div>
-            <p className="text-header">Customer</p>
+            <p className="text-header">Employee Hourly Rate</p>
           </div>
           <div>
             {/* <button
