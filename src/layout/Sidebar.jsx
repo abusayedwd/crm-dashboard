@@ -9,6 +9,9 @@ import { GrUserWorker } from "react-icons/gr";
 import { VscGithubProject } from "react-icons/vsc";
 import { RiVoiceprintFill } from "react-icons/ri";
 import { AiFillDollarCircle } from "react-icons/ai";
+import Swal from "sweetalert2";
+import { HiLogout } from "react-icons/hi";
+import { IoMdGitPullRequest } from "react-icons/io";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -18,6 +21,32 @@ const Sidebar = () => {
     setEmployeeDropdownOpen(!isEmployeeDropdownOpen);
   };
 
+
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      
+      text: "You won't be able to log out from here!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        Swal.fire({
+          title: "Logged Out!",
+          text: "User has been logged out successfully.",
+          icon: "success",
+          timer: 2000
+        });
+        navigate('/');
+      }
+    });
+  };
   return (
     <div className="lg:w-[250px] xl:w-[300px] md:w-[200px] sm:w-[120px] w-[120px] flex flex-col justify-between bg-primaryBg h-full min-h-screen rounded-md">
       <div>
@@ -171,6 +200,18 @@ const Sidebar = () => {
             </NavLink>
 
             <NavLink
+              to="request"
+              className={({ isActive }) =>
+                isActive
+                  ? "flex p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium bg-[#FFFFFF] text-[#193664] rounded-lg"
+                  : "flex text-[white] p-[10px] m-[6px] cursor-pointer items-center text-[18px] font-medium rounded-lg"
+              }
+            >
+             <IoMdGitPullRequest className="h-7 w-7 lg:h-5 lg:w-5"/>
+              <span className="hidden ml-2 sm:block">Request Quote</span>
+            </NavLink>
+
+            {/* <NavLink
               to="settings"
               className={({ isActive }) =>
                 isActive
@@ -180,11 +221,10 @@ const Sidebar = () => {
             >
               <CiSettings className="h-8 w-8 lg:h-5 lg:w-5" />
               <span className="hidden ml-2 sm:block">Settings</span>
-            </NavLink>
+            </NavLink> */}
           </ul>
         </div>
-      </div>
-      {/* Uncomment for Log Out functionality
+      </div> 
       <div className="mb-[60px] mt-2">
         <div
           onClick={handleLogOut}
@@ -193,7 +233,7 @@ const Sidebar = () => {
           <HiLogout className="h-8 w-8 lg:h-5 lg:w-5" />
           <span className="hidden sm:block text-[20px]">Log Out</span>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -29,31 +29,31 @@ const Header = () => {
     setIsModalOpen(true);
   };
   const [passwordChange] = useChangePasswordMutation()
-  const handleLogOut = () => {
-    Swal.fire({
-      title: "Are you sure?",
+  // const handleLogOut = () => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
       
-      text: "You won't be able to log out from here!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, log out!"
-    }).then((result) => {
-      if (result.isConfirmed) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+  //     text: "You won't be able to log out from here!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes, log out!"
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       localStorage.removeItem('token');
+  //       localStorage.removeItem('user');
 
-        Swal.fire({
-          title: "Logged Out!",
-          text: "User has been logged out successfully.",
-          icon: "success",
-          timer: 2000
-        });
-        navigate('/');
-      }
-    });
-  };
+  //       Swal.fire({
+  //         title: "Logged Out!",
+  //         text: "User has been logged out successfully.",
+  //         icon: "success",
+  //         timer: 2000
+  //       });
+  //       navigate('/');
+  //     }
+  //   });
+  // };
 
   const changePassword = async (values) => {
     const { confirmPassword, ...ChangePassword } = values;
@@ -82,19 +82,19 @@ const handleMenuVisibility = (visible) => {
   setMenuVisible(visible);
 };
 
-const menu = (
-  <Menu className={`transition ease-in-out duration-300 transform ${menuVisible ? 'custom-dropdown-menu-visible' : 'custom-dropdown-menu'}`}>
-    <Menu.Item className=" hover:!bg-[#193664]" key="1">
-      <Link to="/dashboard/profile" className=" hover:!bg-[#193664] hover:!text-white">Profile</Link>
-    </Menu.Item>
-    <Menu.Item  className=" hover:!bg-[#193664]" key="2">
-      <p onClick={openModal} className="hover:!bg-[#193664] hover:!text-white">Change Password</p>
-    </Menu.Item>
-    <Menu.Item  className=" hover:!bg-[#193664]" key="3">
-      <p onClick={handleLogOut} className="hover:!bg-[#193664] hover:!text-white">Logout</p>
-    </Menu.Item>
-  </Menu>
-);
+// const menu = (
+//   <Menu className={`transition ease-in-out duration-300 transform ${menuVisible ? 'custom-dropdown-menu-visible' : 'custom-dropdown-menu'}`}>
+//     <Menu.Item className=" hover:!bg-[#193664]" key="1">
+//       <Link to="/dashboard/profile" className=" hover:!bg-[#193664] hover:!text-white">Profile</Link>
+//     </Menu.Item>
+//     <Menu.Item  className=" hover:!bg-[#193664]" key="2">
+//       <p onClick={openModal} className="hover:!bg-[#193664] hover:!text-white">Change Password</p>
+//     </Menu.Item>
+//     <Menu.Item  className=" hover:!bg-[#193664]" key="3">
+//       <p onClick={handleLogOut} className="hover:!bg-[#193664] hover:!text-white">Logout</p>
+//     </Menu.Item>
+//   </Menu>
+// );
 
 
 
@@ -106,10 +106,10 @@ const menu = (
       {/* <h1>{profile?.data?.attributes?.name}</h1> */}
       <h1 className="text-whiteText">{"absayed"}</h1>
      </div>
-
+{/* 
       <div className="flex gap-5">
         {/* <Dropdown overlay={menu} placement="bottomRight" arrow> */}
-        <div
+        {/* <div
           onClick={(e) => navigate("/dashboard/notification")}
           className="relative flex items-center"
         >
@@ -119,7 +119,7 @@ const menu = (
               className={` bg-primary w-[52px] h-[52px] text-[#Ffffffff] border-2 border-[#e7e0e0] rounded-full p-2 `}
             />
           </Badge>
-        </div>
+        </div> */}
         {/* </Dropdown> */}
         {/* <div
           onClick={() => navigate("/dashboard/profile")}
@@ -127,16 +127,16 @@ const menu = (
         >
           <FaRegUser className="text-[#Ffff] border-2 border-[#Fffff] rounded-full p-2 w-[52px] h-[52px]" />
         </div> */}
-        <div>
+        {/* <div>
         <Dropdown className="px-2" overlay={menu} trigger={['click']} onVisibleChange={handleMenuVisibility}>
     <a className="flex items-center text-white cursor-pointer text-whiteText">
       <Avatar src={'https://randomuser.me/api/portraits/men/57.jpg'} className="mr-2 h-[52px] w-[52px]" />
       {/* <Avatar src={url + profile?.data?.attributes?.image} className="mr-2 h-[52px] w-[52px]" /> */}
-      AbSayed <DownOutlined className="ml-1" />
+      {/* AbSayed <DownOutlined className="ml-1" />
     </a>
-  </Dropdown>
-        </div>
-        <Modal
+  </Dropdown> */}
+        {/* </div>  */}
+        {/* <Modal
           open={isModalOpen}
           onOk={() => setIsModalOpen(false)}
           onCancel={() => setIsModalOpen(false)}
@@ -242,8 +242,9 @@ const menu = (
               </Form.Item>
             </Form>
           </div>
-        </Modal>
-      </div>
+        </Modal> */}
+      {/* </div> */}
+      
     </div>
   );
 };

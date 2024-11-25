@@ -17,6 +17,8 @@ const EmployeeWeeklyRate = () => {
 
   const { data: projects } = useProjectListQuery();
   const { data: weeklyProject } = useWeeklyEmployeeHourQuery(selectedProject);
+  console.log(weeklyProject);
+  
 
   const projectOptions = projects?.data.map((project) => ({
     label: project.projectName,
@@ -42,6 +44,7 @@ const EmployeeWeeklyRate = () => {
     weeklyProject?.data.attributes.map((employee) => ({
       key: employee._id,
       name: employee.employeeName,
+      totalHours : employee?.totalWeekHours,
       ...employee.weekData.reduce((acc, week) => {
         acc[`week${week.weekName.split(" ")[1]}`] = week.totalHours || 0;
         return acc;
@@ -66,18 +69,11 @@ const EmployeeWeeklyRate = () => {
     },
     ...weekColumns, // Display all week columns
     {
-      title: "Action",
-      key: "action",
+      title: "totalHours",
+      dataIndex: "totalHours",
+      key: "totalHours",
       fixed: "right",
-      render: () => (
-        <Space size="middle">
-          <BsInfoCircle
-            onClick={() => setIsModalOpen(true)}
-            size={18}
-            className="text-red-500 cursor-pointer"
-          />
-        </Space>
-      ),
+      
       align: "center",
     },
   ];
@@ -102,12 +98,7 @@ const EmployeeWeeklyRate = () => {
                 loading={!projects}
               />
             </Space>
-            <Search
-              style={{ width: "200px", marginLeft: "4px" }}
-              placeholder="Search"
-              onSearch={(value) => console.log(value)}
-              enterButton
-            />
+             
           </div>
         </div>
 

@@ -227,10 +227,12 @@ const onSearch = (value, _e, info) => console.log(info?.source, value);
     <DatePicker onChange={onChange} />
    
   </Space> */}
-          <Search style={{
+  
+          {/* <Search style={{
             width:"200px",
             marginLeft:'4px'
-          }} placeholder="input search text" onSearch={onSearch} enterButton />
+          }} placeholder="input search text" onSearch={onSearch} enterButton /> */}
+
           </div>
         </div>
         <Table

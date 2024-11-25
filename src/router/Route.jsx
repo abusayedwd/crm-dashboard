@@ -53,6 +53,7 @@ import AddInvoice from "../dashboard/menu/sidebarMenu/InvoiceLenbec/addInvoice";
 import PaymentRevolut from "../dashboard/menu/sidebarMenu/revolutePayment/PaymentInRevolut";
 import AddPayment from "../dashboard/menu/sidebarMenu/revolutePayment/AddPayment";
 import Editrevolutepayment from "../dashboard/menu/sidebarMenu/revolutePayment/EditRevolutePayment";
+import RequestQ from "../dashboard/menu/sidebarMenu/RequestQuote/getRequest";
  
  
  
@@ -232,6 +233,11 @@ export const router = createBrowserRouter([
                 element: <Editrevolutepayment />
             },   
          
+            {
+                path: 'request',
+                element:<RequestQ />
+            },
+
             {
                 path: 'settings',
                 element:<Settings />

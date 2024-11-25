@@ -30,29 +30,30 @@ const UpdateRunningProject = () => {
         postCode: project?.data?.attributes?.postCode,
         city: project?.data?.attributes?.city,
         description: project?.data?.attributes?.description,
-        startDate: moment(project?.data?.attributes?.startDate),  
-        endDate: moment(project?.data?.attributes?.endDate),  
+        // startDate: project?.data?.attributes?.startDate,  
+        // endDate: project?.data?.attributes?.endDate,  
       });
-      setStartDate(moment(project?.data?.attributes?.startDate));  
-      setEndDate(moment(project?.data?.attributes?.endDate));  
+      setStartDate(project?.data?.attributes?.startDate);  
+      setEndDate(project?.data?.attributes?.endDate);  
     }
   }, [project, form]);
 
-  const sDate = (date) => {
+  const sDate = (date,dateString) => {
     // Ensure date is set as moment object
-    setStartDate(date ? moment(date) : null); // Always wrap with moment
+    setStartDate(dateString); // Always wrap with moment
   };
 
-  const eDate = (date) => {
+  const eDate = (date, dateString) => {
+    // console.log(dateString)
     // Ensure date is set as moment object
-    setEndDate(date ? moment(date) : null); // Always wrap with moment
+    setEndDate(dateString); // Always wrap with moment
   };
 
   const handleSubmit = async (values) => {
     const data = {
       ...values,
-      startDate: startDate ? startDate.format('YYYY-MM-DD') : '', 
-      endDate: endDate ? endDate.format('YYYY-MM-DD') : '' 
+      startDate ,
+      endDate 
     };
     console.log(data)
 
@@ -110,18 +111,30 @@ const UpdateRunningProject = () => {
 
         <div className="flex flex-wrap mb-4">
           <Form.Item label="Start Date" className="flex-1 mr-4">
-            <DatePicker
+            {/* <DatePicker
               onChange={sDate}
               value={startDate}  // Pass moment object
               style={{ width: '100%' }}
+            /> */}
+               <DatePicker 
+            //  value={startDate}
+              className="w-full" 
+              onChange={sDate} 
+              value={startDate ? moment(startDate, 'YYYY-MM-DD') : null}
             />
           </Form.Item>
 
           <Form.Item label="End Date" className="flex-1 mr-4">
-            <DatePicker
+            {/* <DatePicker
               onChange={eDate}
               value={endDate}  // Pass moment object
               style={{ width: '100%' }}
+            /> */}
+             <DatePicker 
+            //  value={startDate}
+              className="w-full" 
+              onChange={eDate} 
+              value={endDate ? moment(endDate, 'YYYY-MM-DD') : null}
             />
           </Form.Item>
         </div>

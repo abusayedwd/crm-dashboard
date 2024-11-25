@@ -189,7 +189,8 @@ const EmployeeRatehr = () => {
             {/* <Space direction="vertical">
               <DatePicker onChange={onChange} />
             </Space> */}
-            <Search
+            
+            {/* <Search
               style={{
                 width: "200px",
                 marginLeft: "4px",
@@ -197,7 +198,7 @@ const EmployeeRatehr = () => {
               placeholder="input search text"
               onSearch={onSearch}
               enterButton
-            />
+            /> */}
           </div>
         </div>
         <Table

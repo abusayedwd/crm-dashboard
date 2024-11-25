@@ -139,12 +139,12 @@ const EmployeePayment = () => {
             >
               +Add Employee Payment
             </button> */}
-          <Search
+          {/* <Search
             style={{ width: "200px", marginLeft: '4px' }}
             placeholder="input search text"
             onSearch={onSearch}
             enterButton
-          />
+          /> */}
           </div>
         </div>
         <Table
