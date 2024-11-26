@@ -1,4 +1,4 @@
-import { Button, DatePicker, Input, Modal, Space, Table } from "antd";
+import { Button, DatePicker, Image, Input, Modal, Space, Table } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
 import { CloseOutlined, EditOutlined } from "@ant-design/icons";
@@ -11,7 +11,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeletePaymentMutation } from "../../../../redux/features/paymentInRevolut/deletePayment";
 import toast, { Toaster } from "react-hot-toast";
 const { Search } = Input;
-
+import url from "./../../../../redux/api/baseUrl"
 const dataSource = [
   {
     key: "1",
@@ -46,7 +46,7 @@ const PaymentRevolut = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: payment } = useRevolutPaymentQuery();
-  //  console.log(payment?.data);
+   console.log(payment?.data);
   const totalAmount = payment?.data?.reduce(
     (acc, item) => acc + parseInt(item.orignalAmount),
     0
@@ -128,6 +128,31 @@ const PaymentRevolut = () => {
         </div>
       ),
     },
+    {
+      title: "Payment Document",
+      dataIndex: "name",
+      key: "name",
+      render: (_, record) => (
+        <div className="flex gap-2 items-center">
+           
+          {/* <Image
+    width={100}
+    src={url + record?.bankrefPicture?.publicFileUrl}   />*/}
+    <Image.PreviewGroup
+    preview={{
+      onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
+    }}
+  >
+     
+    <Image
+      width={100}
+      src={url + record?.bankrefPicture?.publicFileUrl}
+    />
+  </Image.PreviewGroup>
+
+        </div>
+      ),
+    },
 
     {
       title: "Action",
@@ -193,10 +218,10 @@ const PaymentRevolut = () => {
         </div>
         <Table
           pagination={{
-            total: dataSource.length,
+            total: payment?.data.length,
             showTotal: (total, range) =>
               `${range[0]}-${range[1]} of ${total} items`,
-            defaultPageSize: 5,
+            defaultPageSize: 10,
             showSizeChanger: false,
             itemRender: (current, type, originalElement) => {
               if (type === "prev") {
