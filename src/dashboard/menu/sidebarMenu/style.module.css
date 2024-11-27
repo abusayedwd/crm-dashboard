@@ -6,7 +6,7 @@
   }
   
   .paginationButton {
-    background-color: #003366; /* Dark blue background */
+    background-color: #7ec578; /* Dark blue background */
     color: white; /* White text */
     border: none;
     border-radius: 4px;
@@ -17,11 +17,11 @@
   }
   
   .paginationButton:hover {
-    background-color: #002244; /* Slightly darker blue on hover */
+    background-color: #4cf036; /* Slightly darker blue on hover */
   }
   
   .paginationButtonActive {
-    background-color: #003366; /* Dark blue background */
+    background-color: #469b25; /* Dark blue background */
     color: white; /* White text */
     border: none;
     border-radius: 4px;

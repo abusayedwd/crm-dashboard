@@ -5,10 +5,10 @@ import { apiSlice } from "../../api/apiSlice";
 const updatePayment = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         updatePayment: builder.mutation({
-        query: ( {updatedPaymentData, id}) => ({
+        query: ( {formData, id}) => ({
           url: `/payment-invoice/updateRevaluePayment?id=${id}`,
           method: "PATCH",
-          body: updatedPaymentData,  
+          body: formData,  
         }),
         invalidatesTags: [{type: "Revolut"}]
       }),

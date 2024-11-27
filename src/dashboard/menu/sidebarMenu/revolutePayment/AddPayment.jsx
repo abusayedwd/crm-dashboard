@@ -115,6 +115,7 @@
 
 // export default AddPayment;
 
+
 import React, { useState } from 'react';
 import { Form, Input, Button, DatePicker, InputNumber, Upload, message } from 'antd';
 import 'tailwindcss/tailwind.css';  // Ensure Tailwind CSS is set up
@@ -127,14 +128,14 @@ const AddPayment = () => {
   const navigate = useNavigate();
   const [startDate, setStartdate] = useState('');
   const [completedData, setCompletedDate] = useState('');
-  const [fileList, setFileList] = useState([]);  // To manage uploaded files
+  const [fileList, setFileList] = useState([]);  
 
   const [paymentRevolut, { isLoading }] = useAddRevolutPaymentMutation();
 
   const onFinish = async (values) => {
     const formData = new FormData();
  console.log(fileList)
-    // Append form values to FormData
+ 
     formData.append('type', values.type);
     formData.append('referance', values.referance);
     formData.append('orignalAmount', values.orignalAmount);
