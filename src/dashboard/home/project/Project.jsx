@@ -33,7 +33,7 @@ console.log(projects?.data?.attributes)
       <div className='my-6 flex items-center justify-between'>
 
       <h1 className='text-header font-semibold'>Our Projects</h1>
-      <button onClick={() => navigate('addproject')} className=' bg-primaryBg text-whiteText p-2 rounded-lg'>+Add Project</button>
+      <button onClick={() => navigate('addproject')} className=' bg-primaryBg text-[#FFFFFF] p-2 rounded-lg'>+Add Project</button>
       </div>
      
       <div className='mx-12'> 
