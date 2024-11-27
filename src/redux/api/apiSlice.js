@@ -5,14 +5,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-<<<<<<< HEAD
-    baseUrl: "http://192.168.10.168:4040/api/v1",
-    // baseUrl: "http://167.99.11.156:4040/api/v1", 
-=======
     // baseUrl: "http://192.168.10.168:4040/api/v1",
-    // baseUrl: "http://167.99.11.156:4040/api/v1",
+    // baseUrl: "http://167.99.11.156:4040/api/v1", 
+    
     baseUrl: "https://api.lenbec.com/api/v1",
->>>>>>> 92823a104f9dbdeee79a56d931798adf8c66f336
     prepareHeaders: (headers, { getState }) => {
       const token = localStorage.getItem("token");
     //   console.log("9 baseApi", token);
