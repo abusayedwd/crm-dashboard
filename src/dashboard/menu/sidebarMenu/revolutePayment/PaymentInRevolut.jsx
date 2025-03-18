@@ -46,7 +46,11 @@ const PaymentRevolut = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: payment } = useRevolutPaymentQuery();
+<<<<<<< HEAD
    console.log(payment?.data);
+=======
+   console.log("dataaaaaaaaaaaaaaaaa; ",payment);
+>>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
   const totalAmount = payment?.data?.reduce(
     (acc, item) => acc + parseInt(item.orignalAmount),
     0
@@ -154,25 +158,25 @@ const PaymentRevolut = () => {
       ),
     },
 
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-           <button onClick={() => navigate(`editrevolutepayment/${record?._id}`)} className="flex items-center px-2 py-1   text-[#87884a] font-semibold rounded hover:bg-gray-800 transition duration-300">
-            <EditOutlined className="mr-2 text-[18px]" />
+    // {
+    //   title: "Action",
+    //   key: "action",
+    //   render: (_, record) => (
+    //     <Space size="middle">
+    //        <button onClick={() => navigate(`editrevolutepayment/${record?._id}`)} className="flex items-center px-2 py-1   text-[#87884a] font-semibold rounded hover:bg-gray-800 transition duration-300">
+    //         <EditOutlined className="mr-2 text-[18px]" />
            
-          </button>
-          {/* <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" /> */}
-          <button
-            onClick={() => deletePayment(record?._id)}
-            className="flex items-center px-2 py-1   text-[#f83232] font-semibold rounded hover:bg-gray-800 transition duration-300"
-          >
-            <RiDeleteBin6Line className="mr-2 text-[18px]" />
-          </button>
-        </Space>
-      ),
-    },
+    //       </button>
+    //       {/* <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" /> */}
+    //       <button
+    //         onClick={() => deletePayment(record?._id)}
+    //         className="flex items-center px-2 py-1   text-[#f83232] font-semibold rounded hover:bg-gray-800 transition duration-300"
+    //       >
+    //         <RiDeleteBin6Line className="mr-2 text-[18px]" />
+    //       </button>
+    //     </Space>
+    //   ),
+    // },
   ];
 
   const handleView = () => {
