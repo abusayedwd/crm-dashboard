@@ -46,7 +46,7 @@ const PaymentRevolut = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: payment } = useRevolutPaymentQuery();
-   console.log("dataaaaaaaaaaaaaaaaa; ",payment);
+  //  console.log("dataaaaaaaaaaaaaaaaa; ",payment);
   const totalAmount = payment?.data?.reduce(
     (acc, item) => acc + parseInt(item.orignalAmount),
     0
