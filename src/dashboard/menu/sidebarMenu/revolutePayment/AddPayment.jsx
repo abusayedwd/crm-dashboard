@@ -227,12 +227,8 @@ const AddPayment = () => {
             <Form.Item
               name="type"
               label="Type"
-<<<<<<< HEAD
               rules={[{ required: true, message: 'Please input the type' }]}
             >
-=======
-              rules={[{ required: true, message: 'Please input the type' }]}>
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
               <Input className="w-full border border-gray-300 rounded-md" />
             </Form.Item>
           </div>
