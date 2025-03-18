@@ -154,7 +154,7 @@ const AddPayment = () => {
   
     try {
       // Use fetch to send a POST request with formData
-      const response = await fetch('http://10.0.60.205:4040/api/v1/payment-invoice/upload', {
+      const response = await fetch('https://api.lenbec.com/api/v1/payment-invoice/upload', {
         method: 'POST',
         body: formData, // FormData will automatically set the correct content-type
       });
