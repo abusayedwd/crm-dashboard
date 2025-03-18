@@ -128,31 +128,31 @@ const PaymentRevolut = () => {
         </div>
       ),
     },
-    {
-      title: "Payment Document",
-      dataIndex: "name",
-      key: "name",
-      render: (_, record) => (
-        <div className="flex gap-2 items-center">
+  //   {
+  //     title: "Payment Document",
+  //     dataIndex: "name",
+  //     key: "name",
+  //     render: (_, record) => (
+  //       <div className="flex gap-2 items-center">
            
-          {/* <Image
-    width={100}
-    src={url + record?.bankrefPicture?.publicFileUrl}   />*/}
-    <Image.PreviewGroup
-    preview={{
-      onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
-    }}
-  >
+  //         {/* <Image
+  //   width={100}
+  //   src={url + record?.bankrefPicture?.publicFileUrl}   />*/}
+  //   <Image.PreviewGroup
+  //   preview={{
+  //     onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
+  //   }}
+  // >
      
-    <Image
-      width={100}
-      src={url + record?.bankrefPicture?.publicFileUrl}
-    />
-  </Image.PreviewGroup>
+  //   <Image
+  //     width={100}
+  //     src={url + record?.bankrefPicture?.publicFileUrl}
+  //   />
+  // </Image.PreviewGroup>
 
-        </div>
-      ),
-    },
+  //       </div>
+  //     ),
+  //   },
 
     // {
     //   title: "Action",

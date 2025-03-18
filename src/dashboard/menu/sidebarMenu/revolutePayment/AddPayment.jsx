@@ -270,25 +270,7 @@ const AddPayment = () => {
           </Upload>
         </Form.Item>
 
-        {/* Image Upload */}
-        <Form.Item name="bankrefPicture" label="Upload Documet Image">
-          <Upload
-            action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload" // Your upload URL
-            listType="picture-card" // Displays images in a card
-            fileList={fileList} // The list of uploaded files
-            onPreview={handlePreview} // Preview the image when clicked
-            onChange={handleChange} // Handle changes to file list
-            accept="image/*" // Accept only image files
-            showUploadList={{ showRemoveIcon: true }} // Show remove icon for each file
-            maxCount={1} // Limit to 1 image upload
-          >
-            {fileList.length < 1 && (
-              <Button icon={<UploadOutlined />} className="w-full bg-gray-100 hover:bg-gray-200">
-              
-              </Button>
-            )}
-          </Upload>
-        </Form.Item>
+    
 
         {/* Submit Button */}
         <Form.Item>
