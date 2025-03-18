@@ -116,10 +116,7 @@
 // export default AddPayment;
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
 import React, { useState } from 'react';
 import { Form, Input, Button, DatePicker, InputNumber, Upload, message } from 'antd';
 import 'tailwindcss/tailwind.css';  // Ensure Tailwind CSS is set up
@@ -134,37 +131,6 @@ const AddPayment = () => {
   const [completedData, setCompletedDate] = useState('');
   const [fileList, setFileList] = useState([]);  
 
-<<<<<<< HEAD
-  const [paymentRevolut, { isLoading }] = useAddRevolutPaymentMutation();
-
-  const onFinish = async (values) => {
-    const formData = new FormData();
- console.log(fileList)
- 
-    formData.append('type', values.type);
-    formData.append('referance', values.referance);
-    formData.append('orignalAmount', values.orignalAmount);
-    formData.append('startDate', startDate);
-    formData.append('completedData', completedData);
-
-    // Append the image file to FormData
-    if (fileList.length > 0) {
-      formData.append('bankrefPicture', fileList[0].originFileObj); // Add the file to formData
-    }
-
-    try {
-      const res = await paymentRevolut(formData).unwrap();
-      console.log(res);
-      toast.success(res?.message);
-      setTimeout(() => {
-        navigate('/dashboard/paymentrevolut');
-      }, 1000);
-    } catch (error) {
-      console.log(error);
-      toast.error('Something went wrong');
-    }
-  };
-=======
   // const [paymentRevolut, { isLoading }] = useAddRevolutPaymentMutation();
 
   const onFinish = async (values) => {
@@ -182,7 +148,6 @@ const AddPayment = () => {
     if (fileList.length > 0) {
       formData.append('csvFile', fileList[0].originFileObj); // Add the file to formData
     }
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
 
     // {{base_url}}/payment-invoice/upload
     // 10.0.60.205:4040
@@ -221,18 +186,6 @@ const AddPayment = () => {
     setCompletedDate(dateString);
   };
 
-<<<<<<< HEAD
-  // Handle file change (image upload)
-  const handleChange = ({ fileList: newFileList }) => {
-    // Update the file list on upload change
-    setFileList(newFileList);
-  };
-
-  // Handle image preview
-  const handlePreview = async (file) => {
-    // You can handle image preview logic here if needed
-    // For now, we are using the default behavior
-=======
   // Handle file change (image or CSV upload)
   const handleChange = ({ fileList: newFileList }) => {
     // Validate file type
@@ -246,7 +199,6 @@ const AddPayment = () => {
 
   // Handle image or CSV preview
   const handlePreview = async (file) => {
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
     const src = file.url || file.thumbUrl;
     const imgWindow = window.open(src);
     imgWindow.document.write('<img src="' + src + '" />');
@@ -258,11 +210,7 @@ const AddPayment = () => {
 
       <Form onFinish={onFinish} layout="vertical" className="bg-white p-6 rounded-lg shadow-md">
         {/* Start Date */}
-<<<<<<< HEAD
-        <div className="flex gap-4">
-=======
         {/* <div className="flex gap-4">
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
           <div className="w-full">
             <label className="block text-sm mb-2">* Start Date</label>
             <DatePicker className="w-full" onChange={onDateChange} />
@@ -271,17 +219,10 @@ const AddPayment = () => {
             <label className="block text-sm mb-2">* Completed Date</label>
             <DatePicker className="w-full" onChange={onDueDateChange} />
           </div>
-<<<<<<< HEAD
-        </div>
-
-        {/* Type and Reference */}
-        <div className="flex gap-4 mt-4">
-=======
         </div> */}
 
         {/* Type and Reference */}
         {/* <div className="flex gap-4 mt-4">
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
           <div className="w-full">
             <Form.Item
               name="type"
@@ -299,20 +240,11 @@ const AddPayment = () => {
             <Form.Item
               name="referance"
               label="Reference"
-<<<<<<< HEAD
-              rules={[{ required: true, message: 'Please input the reference' }]}
-            >
-              <Input className="w-full border border-gray-300 rounded-md" />
-            </Form.Item>
-          </div>
-        </div>
-=======
               rules={[{ required: true, message: 'Please input the reference' }]}>
               <Input className="w-full border border-gray-300 rounded-md" />
             </Form.Item>
           </div>
         </div> */}
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
 
         {/* Original Amount */}
         {/* <Form.Item
@@ -368,13 +300,8 @@ const AddPayment = () => {
             type="primary"
             htmlType="submit"
             className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-<<<<<<< HEAD
-            loading={isLoading}
-          >
-=======
             // loading={isLoading}
             >
->>>>>>> 6c77a49688cfd02372d6e02c0cb886596f44d9f0
             Submit
           </Button>
         </Form.Item>
