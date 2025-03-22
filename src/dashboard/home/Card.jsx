@@ -17,8 +17,8 @@ console.log(total)
     return (
         <div className=' mt-12'>
           
-               <div className="grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-5 gap-6 grid-cols-1 lg:gap-6 xl:gap-8 w-full">
-        <div className=" rounded-lg h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+               <div className="grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 gap-6 grid-cols-1 lg:gap-6 xl:gap-8 w-full">
+        <div className=" rounded-lg h-[150px] flex   items-center card bg-[#E8EBF0] shadow-xl">
           <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
             <FaUsers className=" text-[#00bfff] w-12 h-12" />
           </div>
@@ -29,7 +29,7 @@ console.log(total)
             <h1 className="text-[34px] font-medium">{total?.data?.customerLength}</h1>
           </div>
         </div>
-        <div className=" rounded h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+        <div className=" rounded h-[150px] flex  items-center card bg-[#E8EBF0] shadow-xl">
           <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
             <FaUsers className="text-[#00bfff] w-12 h-12" />
           </div>
@@ -41,7 +41,7 @@ console.log(total)
           </div>
         </div>
 
-        <div className="  rounded h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+        <div className="  rounded h-[150px] flex  items-center card bg-[#E8EBF0] shadow-xl">
           <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
             <FaProjectDiagram className="text-[#00bfff] w-12 h-12" />
           </div>
@@ -52,7 +52,7 @@ console.log(total)
             <h1 className="text-[34px] font-medium">{total?.data?.projectListLength}</h1>
           </div>
         </div>
-        <div className="  rounded h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+        <div className="  rounded h-[150px] flex  items-center card bg-[#E8EBF0] shadow-xl">
         <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
         <HiCurrencyDollar className="text-[#00bfff] w-12 h-12" />
           </div>
@@ -63,7 +63,7 @@ console.log(total)
             <h1 className="text-[34px] font-medium">{total?.data?.totalEarn}</h1>
           </div>
         </div>
-        <div className="  rounded h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+        <div className="  rounded h-[150px] flex  items-center card bg-[#E8EBF0] shadow-xl">
           <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
           <FaClosedCaptioning className="text-[#00bfff] w-12 h-12" />
           </div>
@@ -74,7 +74,7 @@ console.log(total)
             <h1 className="text-[34px] font-medium">{total?.data?.totlaCost}</h1>
           </div>
         </div>
-        <div className="  rounded h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
+        <div className="  rounded h-[150px] flex  items-center card bg-[#E8EBF0] shadow-xl">
           <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
             <FaUser className="text-[#00bfff] w-12 h-12" />
           </div>
@@ -85,11 +85,11 @@ console.log(total)
             <h1 className="text-[34px] font-medium">{total?.data?.employeeCost}</h1>
           </div>
         </div>
-        <div className="  rounded h-[150px] flex justify-between items-center card bg-[#E8EBF0] shadow-xl">
-          <div className="mx-6 h-16 w-16 rounded  flex justify-center items-center">
+        <div className="  rounded h-[150px] flex  items-center card bg-[#E8EBF0] shadow-xl">
+          <div className=" h-16 w-16 rounded  flex justify-center items-center">
           <PiCurrencyDollarThin className="text-[#00bfff] w-12 h-12" />
           </div>
-          <div className="mx-6 text-center">
+          <div className="mx-4 text-center">
             <p className="text-[18px] font-semibold my-4">
             Total Revenue
             </p>

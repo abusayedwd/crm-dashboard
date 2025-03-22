@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import { useChangePasswordMutation } from "../redux/features/auth/changePassword";
 import toast, { Toaster } from "react-hot-toast";
+import { FaRegUser } from "react-icons/fa";
   
  
  
@@ -29,31 +30,32 @@ const Header = () => {
     setIsModalOpen(true);
   };
   const [passwordChange] = useChangePasswordMutation()
-  // const handleLogOut = () => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-      
-  //     text: "You won't be able to log out from here!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, log out!"
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       localStorage.removeItem('token');
-  //       localStorage.removeItem('user');
 
-  //       Swal.fire({
-  //         title: "Logged Out!",
-  //         text: "User has been logged out successfully.",
-  //         icon: "success",
-  //         timer: 2000
-  //       });
-  //       navigate('/');
-  //     }
-  //   });
-  // };
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      
+      text: "You won't be able to log out from here!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, log out!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        Swal.fire({
+          title: "Logged Out!",
+          text: "User has been logged out successfully.",
+          icon: "success",
+          timer: 2000
+        });
+        navigate('/');
+      }
+    });
+  };
 
   const changePassword = async (values) => {
     const { confirmPassword, ...ChangePassword } = values;
@@ -82,19 +84,19 @@ const handleMenuVisibility = (visible) => {
   setMenuVisible(visible);
 };
 
-// const menu = (
-//   <Menu className={`transition ease-in-out duration-300 transform ${menuVisible ? 'custom-dropdown-menu-visible' : 'custom-dropdown-menu'}`}>
-//     <Menu.Item className=" hover:!bg-[#193664]" key="1">
-//       <Link to="/dashboard/profile" className=" hover:!bg-[#193664] hover:!text-white">Profile</Link>
-//     </Menu.Item>
-//     <Menu.Item  className=" hover:!bg-[#193664]" key="2">
-//       <p onClick={openModal} className="hover:!bg-[#193664] hover:!text-white">Change Password</p>
-//     </Menu.Item>
-//     <Menu.Item  className=" hover:!bg-[#193664]" key="3">
-//       <p onClick={handleLogOut} className="hover:!bg-[#193664] hover:!text-white">Logout</p>
-//     </Menu.Item>
-//   </Menu>
-// );
+const menu = (
+  <Menu className={`transition ease-in-out duration-300 transform ${menuVisible ? 'custom-dropdown-menu-visible' : 'custom-dropdown-menu'}`}>
+    <Menu.Item className=" hover:!bg-[#193664]" key="1">
+      <Link to="/dashboard/profile" className=" hover:!bg-[#193664] hover:!text-white">Profile</Link>
+    </Menu.Item>
+    <Menu.Item  className=" hover:!bg-[#193664]" key="2">
+      <p onClick={openModal} className="hover:!bg-[#193664] hover:!text-white">Change Password</p>
+    </Menu.Item>
+    <Menu.Item  className=" hover:!bg-[#193664]" key="3">
+      <p onClick={handleLogOut} className="hover:!bg-[#193664] hover:!text-white">Logout</p>
+    </Menu.Item>
+  </Menu>
+);
 
 
 
@@ -103,13 +105,15 @@ const handleMenuVisibility = (visible) => {
     <Toaster />
      <div className="text-white">
       <p className="text-header text-whiteText font-medium">Webcome !</p>
-      {/* <h1>{profile?.data?.attributes?.name}</h1> */}
+       {/* <h1>{profile?.data?.attributes?.name}</h1>  */}
       <h1 className="text-whiteText">{"absayed"}</h1>
      </div>
-{/* 
+
       <div className="flex gap-5">
-        {/* <Dropdown overlay={menu} placement="bottomRight" arrow> */}
-        {/* <div
+
+        {/* <Dropdown overlay={menu} placement="bottomRight" arrow> 
+
+        <div
           onClick={(e) => navigate("/dashboard/notification")}
           className="relative flex items-center"
         >
@@ -119,24 +123,32 @@ const handleMenuVisibility = (visible) => {
               className={` bg-primary w-[52px] h-[52px] text-[#Ffffffff] border-2 border-[#e7e0e0] rounded-full p-2 `}
             />
           </Badge>
-        </div> */}
-        {/* </Dropdown> */}
-        {/* <div
+        </div> 
+        </Dropdown>  */}
+
+
+         {/* <div
           onClick={() => navigate("/dashboard/profile")}
           className="flex items-center cursor-pointer mr-[30px] bg-primary text-white rounded-full p-1"
         >
           <FaRegUser className="text-[#Ffff] border-2 border-[#Fffff] rounded-full p-2 w-[52px] h-[52px]" />
-        </div> */}
+        </div>  */}
+
+
+
         {/* <div>
         <Dropdown className="px-2" overlay={menu} trigger={['click']} onVisibleChange={handleMenuVisibility}>
     <a className="flex items-center text-white cursor-pointer text-whiteText">
       <Avatar src={'https://randomuser.me/api/portraits/men/57.jpg'} className="mr-2 h-[52px] w-[52px]" />
-      {/* <Avatar src={url + profile?.data?.attributes?.image} className="mr-2 h-[52px] w-[52px]" /> */}
-      {/* AbSayed <DownOutlined className="ml-1" />
-    </a>
-  </Dropdown> */}
-        {/* </div>  */}
-        {/* <Modal
+       {/* <Avatar src={url + profile?.data?.attributes?.image} className="mr-2 h-[52px] w-[52px]" />  */}
+       {/* AbSayed <DownOutlined className="ml-1" /> */}
+    {/* </a> */}
+  {/* </Dropdown>  */}
+        {/* </div>   */}
+ 
+
+
+         <Modal
           open={isModalOpen}
           onOk={() => setIsModalOpen(false)}
           onCancel={() => setIsModalOpen(false)}
@@ -242,8 +254,8 @@ const handleMenuVisibility = (visible) => {
               </Form.Item>
             </Form>
           </div>
-        </Modal> */}
-      {/* </div> */}
+        </Modal> 
+      </div>
       
     </div>
   );

@@ -1,4 +1,4 @@
-import { Button, DatePicker, Image, Input, Modal, Space, Table } from "antd";
+import { Button, DatePicker, Input, Modal, Space, Table } from "antd";
 import { BsInfoCircle } from "react-icons/bs";
 import { useState } from "react";
 import { CloseOutlined, EditOutlined } from "@ant-design/icons";
@@ -11,7 +11,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { useDeletePaymentMutation } from "../../../../redux/features/paymentInRevolut/deletePayment";
 import toast, { Toaster } from "react-hot-toast";
 const { Search } = Input;
-import url from "./../../../../redux/api/baseUrl"
+
 const dataSource = [
   {
     key: "1",
@@ -46,7 +46,7 @@ const PaymentRevolut = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: payment } = useRevolutPaymentQuery();
-   console.log(payment?.data);
+   console.log("dataaaaaaaaaaaaaaaaa; ",payment);
   const totalAmount = payment?.data?.reduce(
     (acc, item) => acc + parseInt(item.orignalAmount),
     0
@@ -128,51 +128,26 @@ const PaymentRevolut = () => {
         </div>
       ),
     },
-    {
-      title: "Payment Document",
-      dataIndex: "name",
-      key: "name",
-      render: (_, record) => (
-        <div className="flex gap-2 items-center">
-           
-          {/* <Image
-    width={100}
-    src={url + record?.bankrefPicture?.publicFileUrl}   />*/}
-    <Image.PreviewGroup
-    preview={{
-      onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
-    }}
-  >
-     
-    <Image
-      width={100}
-      src={url + record?.bankrefPicture?.publicFileUrl}
-    />
-  </Image.PreviewGroup>
 
-        </div>
-      ),
-    },
-
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-           <button onClick={() => navigate(`editrevolutepayment/${record?._id}`)} className="flex items-center px-2 py-1   text-[#87884a] font-semibold rounded hover:bg-gray-800 transition duration-300">
-            <EditOutlined className="mr-2 text-[18px]" />
+    // {
+    //   title: "Action",
+    //   key: "action",
+    //   render: (_, record) => (
+    //     <Space size="middle">
+    //        <button onClick={() => navigate(`editrevolutepayment/${record?._id}`)} className="flex items-center px-2 py-1   text-[#87884a] font-semibold rounded hover:bg-gray-800 transition duration-300">
+    //         <EditOutlined className="mr-2 text-[18px]" />
            
-          </button>
-          {/* <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" /> */}
-          <button
-            onClick={() => deletePayment(record?._id)}
-            className="flex items-center px-2 py-1   text-[#f83232] font-semibold rounded hover:bg-gray-800 transition duration-300"
-          >
-            <RiDeleteBin6Line className="mr-2 text-[18px]" />
-          </button>
-        </Space>
-      ),
-    },
+    //       </button>
+    //       {/* <BsInfoCircle  onClick={() => handleView(record)}  size={18} className="text-[red] cursor-pointer" /> */}
+    //       <button
+    //         onClick={() => deletePayment(record?._id)}
+    //         className="flex items-center px-2 py-1   text-[#f83232] font-semibold rounded hover:bg-gray-800 transition duration-300"
+    //       >
+    //         <RiDeleteBin6Line className="mr-2 text-[18px]" />
+    //       </button>
+    //     </Space>
+    //   ),
+    // },
   ];
 
   const handleView = () => {

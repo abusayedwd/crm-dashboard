@@ -31,6 +31,7 @@ const onFinish = async (values) => {
     formData.append('project', fileList[0].originFileObj)
   }
  try{
+
   const res = await addProject(formData).unwrap();
   // console.log(res)
   if(res?.statusCode == 201){
