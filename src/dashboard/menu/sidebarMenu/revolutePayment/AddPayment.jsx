@@ -116,6 +116,7 @@
 // export default AddPayment;
 
 
+
 import React, { useState } from 'react';
 import { Form, Input, Button, DatePicker, InputNumber, Upload, message } from 'antd';
 import 'tailwindcss/tailwind.css';  // Ensure Tailwind CSS is set up
@@ -267,6 +268,8 @@ const AddPayment = () => {
             )}
           </Upload>
         </Form.Item>
+
+    
 
         {/* Submit Button */}
         <Form.Item>
