@@ -46,11 +46,7 @@ const PaymentRevolut = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: payment } = useRevolutPaymentQuery();
-<<<<<<< HEAD
    console.log("dataaaaaaaaaaaaaaaaa; ",payment);
-=======
-  //  console.log("dataaaaaaaaaaaaaaaaa; ",payment);
->>>>>>> origin/main
   const totalAmount = payment?.data?.reduce(
     (acc, item) => acc + parseInt(item.orignalAmount),
     0
@@ -132,36 +128,7 @@ const PaymentRevolut = () => {
         </div>
       ),
     },
-<<<<<<< HEAD
 
-=======
-  //   {
-  //     title: "Payment Document",
-  //     dataIndex: "name",
-  //     key: "name",
-  //     render: (_, record) => (
-  //       <div className="flex gap-2 items-center">
-           
-  //         {/* <Image
-  //   width={100}
-  //   src={url + record?.bankrefPicture?.publicFileUrl}   />*/}
-  //   <Image.PreviewGroup
-  //   preview={{
-  //     onChange: (current, prev) => console.log(`current index: ${current}, prev index: ${prev}`),
-  //   }}
-  // >
-     
-  //   <Image
-  //     width={100}
-  //     src={url + record?.bankrefPicture?.publicFileUrl}
-  //   />
-  // </Image.PreviewGroup>
-
-  //       </div>
-  //     ),
-  //   },
-
->>>>>>> origin/main
     // {
     //   title: "Action",
     //   key: "action",
