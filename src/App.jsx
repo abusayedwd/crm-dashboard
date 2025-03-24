@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <h1 className=" font-bold underline">
-      Hello worldddddddddd!dfdsfdsf
+      Hello tyy
     </h1>
     </div>
   )
